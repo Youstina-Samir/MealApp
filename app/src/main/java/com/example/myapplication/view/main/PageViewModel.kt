@@ -1,4 +1,4 @@
-package com.example.myapplication.controller.ui.main
+package com.example.myapplication.view.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

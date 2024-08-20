@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Model
 
 import androidx.annotation.NonNull
 import com.google.gson.annotations.SerializedName

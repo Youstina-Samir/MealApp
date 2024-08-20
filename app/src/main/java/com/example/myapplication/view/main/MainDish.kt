@@ -1,4 +1,4 @@
-package com.example.myapplication.controller
+package com.example.myapplication.view.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,12 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Database.MealsDatabase
-import com.example.myapplication.Meals
+import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
-import com.example.myapplication.netwrok.RetroBuilder
+import com.example.myapplication.Model.netwrok.RetroBuilder
+import com.example.myapplication.view.AccountActivity
+import com.example.myapplication.view.MainActivity
 import com.example.myapplication.view.MealAdapter
 import com.example.myapplication.view.OnButtonClick
+import com.example.myapplication.view.favActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

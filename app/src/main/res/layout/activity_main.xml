@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#A4D2E0F6"
     android:backgroundTint="#A4D2E0F6"
-    tools:context=".controller.MainActivity">
+    tools:context=".view.MainActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView

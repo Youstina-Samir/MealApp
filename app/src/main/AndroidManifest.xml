@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".controller.MealDetails"
+            android:name=".view.MealDetails"
             android:exported="false"
             android:label="@string/title_activity_meal_details"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
@@ -29,19 +29,19 @@
             android:exported="false"
             android:label="@string/title_activity_navigation" />
         <activity
-            android:name=".WeeklyPlannerActivity"
+            android:name=".view.WeeklyPlannerActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.AccountActivity"
+            android:name=".view.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.MainDish"
+            android:name=".view.main.MainDish"
             android:exported="false" />
         <activity
-            android:name=".controller.favActivity"
+            android:name=".view.favActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

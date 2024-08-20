@@ -1,4 +1,4 @@
-package com.example.myapplication.controller.ui.main
+package com.example.myapplication.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

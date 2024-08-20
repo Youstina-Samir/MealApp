@@ -1,4 +1,4 @@
-package com.example.myapplication.netwrok
+package com.example.myapplication.Model.netwrok
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

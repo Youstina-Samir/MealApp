@@ -1,6 +1,5 @@
 package com.example.myapplication.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,11 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.myapplication.Category
-import com.example.myapplication.controller.MainDish
+import com.example.myapplication.Model.Category
+import com.example.myapplication.view.main.MainDish
 import com.example.myapplication.R
 
-class CategoriesAdapter(val categorylist: ArrayList<Category>, val context: Context):RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+class CategoriesAdapter(var categorylist: ArrayList<Category>, val context: Context):RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
     class CategoryViewHolder(val row:View): RecyclerView.ViewHolder(row) {
         val img =row.findViewById<ImageView>(R.id.imageView)
         val name = row.findViewById<TextView>(R.id.nameview)

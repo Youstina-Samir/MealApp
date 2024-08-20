@@ -1,4 +1,4 @@
-package com.example.myapplication.controller
+package com.example.myapplication.view
 
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +13,9 @@ import android.widget.VideoView
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.controller.ui.main.SectionsPagerAdapter
+import com.example.myapplication.view.main.SectionsPagerAdapter
 import com.example.myapplication.databinding.ActivityMealDetailsBinding
-import com.example.myapplication.netwrok.RetroBuilder
+import com.example.myapplication.Model.netwrok.RetroBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

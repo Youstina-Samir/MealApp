@@ -1,11 +1,11 @@
-package com.example.myapplication.Database
+package com.example.myapplication.Model.Database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.myapplication.Meals
+import com.example.myapplication.Model.Meals
 
 @Dao
 interface MealsDao {

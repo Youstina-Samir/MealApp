@@ -11,11 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.myapplication.Meals
+import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
-import com.example.myapplication.controller.MealDetails
 
-class MealAdapter(var meallist: List<Meals>, val context: Context , val OnButtonClick: OnButtonClick): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
+class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonClick: OnButtonClick): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
     class MealViewHolder (val row: View): RecyclerView.ViewHolder(row){
         val img =row.findViewById<ImageView>(R.id.mealimg)
         val name = row.findViewById<TextView>(R.id.mealName)

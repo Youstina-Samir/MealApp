@@ -1,6 +1,6 @@
 package com.example.myapplication.view
 
-import com.example.myapplication.Meals
+import com.example.myapplication.Model.Meals
 
 interface OnButtonClick {
     fun favbtnclick(meal: Meals)

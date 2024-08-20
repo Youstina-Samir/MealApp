@@ -1,15 +1,15 @@
-package com.example.myapplication.controller
+package com.example.myapplication.Model
 
 import com.google.gson.annotations.SerializedName
 
 
 data class RandomMeal (
 
-    @SerializedName("meals" ) var meals : ArrayList<Meals> = arrayListOf()
+    @SerializedName("meals" ) var Randomeals : ArrayList<Mealss> = arrayListOf()
 
 )
 
-data class Meals (
+data class Mealss (
 
     @SerializedName("idMeal"                      ) var idMeal                      : String? = null,
     @SerializedName("strMeal"                     ) var strMeal                     : String? = null,

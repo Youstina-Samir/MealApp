@@ -1,10 +1,10 @@
-package com.example.myapplication.netwrok
+package com.example.myapplication.Model.netwrok
 
-import com.example.myapplication.Categories
-import com.example.myapplication.MealDescriptionArray
+import com.example.myapplication.Model.Categories
+import com.example.myapplication.Model.MealDescriptionArray
 //import com.example.myapplication.MealDescriptionArray
-import com.example.myapplication.MealList
-import com.example.myapplication.controller.RandomMeal
+import com.example.myapplication.Model.MealList
+import com.example.myapplication.Model.RandomMeal
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

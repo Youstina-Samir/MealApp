@@ -1,4 +1,4 @@
-package com.example.myapplication.controller
+package com.example.myapplication.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.netwrok.RetroBuilder
+import com.example.myapplication.Model.netwrok.RetroBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -51,10 +51,10 @@ lateinit var imgUrl:String
         viewLifecycleOwner.lifecycleScope.launch {
             val resultRandomMeal= RetroBuilder.service.GetRandomMeal()
             withContext(Dispatchers.Main){
-                RandomMealName.text=resultRandomMeal.body()?.meals?.get(0)?.strMeal
-                RandomMealCategory.text=resultRandomMeal.body()?.meals?.get(0)?.strCategory
-                RandomMealArea.text=resultRandomMeal.body()?.meals?.get(0)?.strArea
-                imgUrl=resultRandomMeal.body()?.meals?.get(0)?.strMealThumb.toString()
+                RandomMealName.text=resultRandomMeal.body()?.Randomeals?.get(0)?.strMeal
+                RandomMealCategory.text=resultRandomMeal.body()?.Randomeals?.get(0)?.strCategory
+                RandomMealArea.text=resultRandomMeal.body()?.Randomeals?.get(0)?.strArea
+                imgUrl=resultRandomMeal.body()?.Randomeals?.get(0)?.strMealThumb.toString()
                 Glide.with(this@suggestMealFragment)
                     .load(imgUrl)
                     .centerCrop()
