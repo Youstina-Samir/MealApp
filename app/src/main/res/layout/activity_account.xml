@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.AccountActivity">
+
+    <Button
+        android:id="@+id/favbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/fav"
+        android:textColorLink="#990101"
+        app:icon="@android:drawable/star_on"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#FFC107"
+        app:strokeColor="#FFC107" />
+
+    <Button
+        android:id="@+id/searchbtn"
+        android:layout_width="121dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/search"
+        app:icon="@android:drawable/ic_menu_search"
+        app:iconPadding="0dp"
+        app:layout_constraintEnd_toStartOf="@+id/accountbtn"
+        app:layout_constraintTop_toTopOf="@+id/accountbtn" />
+
+    <Button
+        android:id="@+id/accountbtn"
+        android:layout_width="136dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/account"
+        app:icon="@android:drawable/ic_menu_my_calendar"
+        app:iconPadding="0dp"
+        app:layout_constraintEnd_toStartOf="@+id/favbtn"
+        app:layout_constraintTop_toTopOf="@+id/favbtn" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="469dp"
+        android:layout_height="85dp"
+        android:background="#273D6A"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:text="@string/meal_prep2"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="-3dp" />
+
+    <Button
+        android:id="@+id/btnhome"
+        android:layout_width="94dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/your_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/accountMailView"
+        android:layout_width="262dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.397"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:text="@string/your_mail" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/your_email"
+        app:layout_constraintStart_toStartOf="@+id/NameView"
+        app:layout_constraintTop_toBottomOf="@+id/NameView" />
+
+    <TextView
+        android:id="@+id/NameView"
+        android:layout_width="259dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="20dp"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:text="your name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/your_account"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/signupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="@string/create_account"
+        app:layout_constraintBottom_toTopOf="@+id/accountbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/loginFragmentContainerView"
+        android:layout_width="306dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountMailView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

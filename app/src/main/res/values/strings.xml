@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="meal1">meal1</string>
+    <string name="fav">fav</string>
+    <string name="search">search</string>
+    <string name="account">account\n</string>
+    <string name="msg">What do you want to eat today?</string>
+    <string name="meal_prep">Meal Perp</string>
+    <string name="nofav">Nothing is added yet</string>
+    <string name="home">Home</string>
+    <string name="meal_prep2">Meal Prep</string>
+    <string name="suggest">Suggest a meal</string>
+    <string name="categories">Categories</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="suggested_meal">Here\'s a suggested meal for you</string>
+    <string name="exit">Exit</string>
+    <string name="your_account">Your account</string>
+    <string name="your_name">Name:</string>
+    <string name="your_email">Email:</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="create_account">create a new account</string>
+    <string name="your_mail">Your mail</string>
+    <string name="add_to_fav">add to fav</string>
+    <string name="Delete">delete</string>
+    <string name="title_activity_meal_details">MealDetails</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_navigation">navigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_meals_detials">MealsDetials</string>
+</resources>
