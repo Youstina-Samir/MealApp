@@ -15,19 +15,16 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MealsByAreaActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MealDetails"
             android:exported="false"
             android:label="@string/title_activity_meal_details"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
-            android:name=".MealsDetails"
-            android:exported="false"
-            android:label="@string/title_activity_meals_detials"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
-            android:name=".controller.navigationActivity"
-            android:exported="false"
-            android:label="@string/title_activity_navigation" />
         <activity
             android:name=".view.WeeklyPlannerActivity"
             android:exported="false" />
@@ -35,7 +32,7 @@
             android:name=".view.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".view.main.MainDish"
+            android:name=".view.MealsByCategory"
             android:exported="false" />
         <activity
             android:name=".view.favActivity"

@@ -2,7 +2,6 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -10,10 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.myapplication.Model.Areas
 import com.example.myapplication.Model.Category
 import com.example.myapplication.Model.Database.MealsDatabase
 
@@ -24,17 +23,16 @@ import com.example.myapplication.R
 import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     lateinit var favbtn: Button
     lateinit var btnsuggest: Button
     lateinit var accountbtn: Button
-    lateinit var adapter: CategoriesAdapter
+    lateinit var categoriesAdapter: CategoriesAdapter
+    lateinit var countriesAdapter: CountiresAdapter
     lateinit var viewModel: MainActivityViewModel
-    lateinit var CatRecyclerView: RecyclerView
+    lateinit var recyclerViewCategrories: RecyclerView
+    lateinit var recyclerViewCountries: RecyclerView
     lateinit var textView: TextView
     lateinit var swip : SwipeRefreshLayout
     //lateinit var category: String
@@ -51,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         setUpViewModel()
 
         viewModel.getCategories()
+        viewModel.getCountries()
         val observerMsg: Observer<String> = object : Observer<String> {
             override fun onChanged(value: String) {
                 Toast.makeText(this@MainActivity,value, Toast.LENGTH_SHORT).show()
@@ -58,19 +57,30 @@ class MainActivity : AppCompatActivity() {
         }
         val observerProducts: Observer<ArrayList<Category>> = object : Observer<ArrayList<Category>> {
             override fun onChanged(value: ArrayList<Category>) {
-                adapter.categorylist = value
-                adapter.notifyDataSetChanged()
+                categoriesAdapter.categorylist = value
+                categoriesAdapter.notifyDataSetChanged()
             }
         }
+        val observerCountries: Observer<ArrayList<Areas>> = object : Observer<ArrayList<Areas>> {
+            override fun onChanged(value: ArrayList<Areas>) {
+                countriesAdapter.Countireslist = value
+                countriesAdapter.notifyDataSetChanged()
+            }}
+        viewModel.Country.observe(this, observerCountries)
         viewModel.msg.observe(this, observerMsg)
         viewModel.Category.observe(this, observerProducts)
 
 
 
-        CatRecyclerView = findViewById<RecyclerView>(R.id.recyclerViewTxt)
-        adapter = CategoriesAdapter(ArrayList(), this)
-        CatRecyclerView.layoutManager= LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-        CatRecyclerView.adapter =adapter
+        recyclerViewCategrories = findViewById<RecyclerView>(R.id.recyclerViewTxt)
+        categoriesAdapter = CategoriesAdapter(ArrayList(), this)
+        recyclerViewCategrories.layoutManager= LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewCategrories.adapter =categoriesAdapter
+
+        recyclerViewCountries = findViewById<RecyclerView>(R.id.recyclerViewCountries)
+        countriesAdapter = CountiresAdapter(ArrayList(), this)
+        recyclerViewCountries.layoutManager= LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewCountries.adapter =countriesAdapter
 
 
 

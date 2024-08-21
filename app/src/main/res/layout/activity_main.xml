@@ -13,16 +13,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTxt"
-        android:layout_width="278dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="204dp"
-        android:background="#774B8BED"
+        android:layout_width="407dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="188dp"
+        android:background="#004B8BED"
         android:paddingRight="10dp"
         android:scrollbarSize="8dp"
         android:soundEffectsEnabled="true"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,10 +53,12 @@
         android:id="@+id/suggestbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
         android:text="@string/suggest"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCountries" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,67 +71,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recyclerViewTxt" />
 
+    <Button
+        android:id="@+id/accountbtn"
+        android:layout_width="136dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="12dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/account"
+        app:icon="@android:drawable/ic_menu_my_calendar"
+        app:iconPadding="0dp"
+        app:layout_constraintStart_toEndOf="@+id/favbtn"
+        app:layout_constraintTop_toTopOf="@+id/favbtn" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/suggestFragment"
         android:layout_width="352dp"
         android:layout_height="158dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/suggestbtn" />
 
-    <SearchView
-        android:id="@+id/Searchbar"
-        android:layout_width="260dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="76dp"
+    <Button
+        android:id="@+id/favbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/fav"
+        android:textColorLink="#990101"
+        app:icon="@android:drawable/star_on"
+        app:iconPadding="0dp"
+        app:layout_constraintStart_toEndOf="@+id/searchbtn"
+        app:layout_constraintTop_toBottomOf="@+id/suggestFragment"
+        app:rippleColor="#FFC107"
+        app:strokeColor="#FFC107" />
+
+    <Button
+        android:id="@+id/searchbtn"
+        android:layout_width="121dp"
+        android:layout_height="43dp"
+        android:backgroundTint="#5C100D0D"
+        android:text="@string/search"
+        app:icon="@android:drawable/ic_menu_search"
+        app:iconPadding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+        app:layout_constraintTop_toTopOf="@+id/favbtn" />
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="368dp"
-        android:layout_height="101dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCountries"
+        android:layout_width="412dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="614dp">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom" />
-
-        <Button
-            android:id="@+id/accountbtn"
-            android:layout_width="136dp"
-            android:layout_height="42dp"
-            android:backgroundTint="#5C100D0D"
-            android:text="@string/account"
-            app:icon="@android:drawable/ic_menu_my_calendar"
-            app:iconPadding="0dp" />
-
-        <Button
-            android:id="@+id/favbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#5C100D0D"
-            android:text="@string/fav"
-            android:textColorLink="#990101"
-            app:icon="@android:drawable/star_on"
-            app:iconPadding="0dp"
-            app:rippleColor="#FFC107"
-            app:strokeColor="#FFC107" />
-
-        <Button
-            android:id="@+id/searchbtn"
-            android:layout_width="121dp"
-            android:layout_height="43dp"
-            android:backgroundTint="#5C100D0D"
-            android:text="@string/search"
-            app:icon="@android:drawable/ic_menu_search"
-            app:iconPadding="0dp" />
-    </com.google.android.material.navigation.NavigationView>
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

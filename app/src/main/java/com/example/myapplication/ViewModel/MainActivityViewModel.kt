@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.Model.Areas
 import com.example.myapplication.Model.Category
 import com.example.myapplication.Model.Database.MealsDao
 import com.example.myapplication.Model.netwrok.RetroBuilder
@@ -16,6 +17,10 @@ import kotlinx.coroutines.withContext
 class MainActivityViewModel (private val dao: MealsDao, private val retrofit: SimpleService) : ViewModel() {
     private val _Category = MutableLiveData<ArrayList<Category>>()
     val Category: LiveData<ArrayList<Category>> = _Category
+
+    private val _Country = MutableLiveData<ArrayList<Areas>>()
+    val Country: LiveData<ArrayList<Areas>> = _Country
+
     private val _msg = MutableLiveData<String>()
     val msg: LiveData<String> = _msg
     init {
@@ -34,6 +39,19 @@ class MainActivityViewModel (private val dao: MealsDao, private val retrofit: Si
             }
             }
         }
+    }
+    fun getCountries() {
+        viewModelScope.launch (Dispatchers.IO){
+            val resultCountries = RetroBuilder.service.getAreaList()?.body()?.CountiresArrayList
+            withContext(Dispatchers.Main) {
+                if (resultCountries.isNullOrEmpty()){
+                    _msg.postValue("No products found")
+                }
+                else{
+                    _Country.postValue(resultCountries!!)
+                }
+            }
+                }
     }
 }
 class MainFactory   (private val dao: MealsDao, private val retrofit: SimpleService): ViewModelProvider.Factory {
