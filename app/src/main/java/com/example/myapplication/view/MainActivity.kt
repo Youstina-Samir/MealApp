@@ -21,6 +21,7 @@ import com.example.myapplication.Model.Database.MealsDatabase
 //import com.example.myapplication.view.CategoriesAdapter
 import com.example.myapplication.R
 import com.example.myapplication.Model.netwrok.RetroBuilder
+import com.example.myapplication.SearchActivity
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var favbtn: Button
     lateinit var btnsuggest: Button
     lateinit var accountbtn: Button
+    lateinit var searchbtn: Button
     lateinit var categoriesAdapter: CategoriesAdapter
     lateinit var countriesAdapter: CountiresAdapter
     lateinit var viewModel: MainActivityViewModel
@@ -101,6 +103,11 @@ class MainActivity : AppCompatActivity() {
             accountbtn = findViewById(R.id.accountbtn)
             accountbtn.setOnClickListener({
                 val outIntent = Intent(this, AccountActivity::class.java)
+                startActivity(outIntent)
+            })
+            searchbtn=findViewById(R.id.searchbtn)
+            searchbtn.setOnClickListener({
+                val outIntent = Intent(this, SearchActivity::class.java)
                 startActivity(outIntent)
             })
 

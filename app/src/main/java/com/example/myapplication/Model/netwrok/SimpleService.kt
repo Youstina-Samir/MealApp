@@ -24,6 +24,8 @@ interface SimpleService {
     suspend fun getAreaList(): Response<Countires>
     @GET("api/json/v1/1/filter.php")
     suspend fun getMealsByArea(@Query("a") area: String): Response<MealList>
+    @GET("api/json/v1/1/filter.php")
+    suspend fun getMealsByIngredient(@Query("i") ingredient: String): Response<MealList>
 
 }
 

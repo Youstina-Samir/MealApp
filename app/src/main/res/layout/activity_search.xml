@@ -7,4 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="409dp"
+        android:layout_height="85dp"
+        android:background="#273D6A"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:text="@string/meal_prep2"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-3dp" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="217dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="125dp"
+        android:layout_height="28dp"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewerSearch"
+        android:layout_width="409dp"
+        android:layout_height="595dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

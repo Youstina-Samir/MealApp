@@ -43,7 +43,18 @@ class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleSe
             }
         }
     }
-
+    fun getMealsByIngredient(ingredient: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val resultMeals = retrofit.getMealsByIngredient(ingredient)
+            withContext(Dispatchers.Main) {
+                if (resultMeals.body()?.mealsArrayList.isNullOrEmpty()) {
+                    _msg.postValue("No products found")
+                } else {
+                    _Meals.postValue(resultMeals.body()?.mealsArrayList!!)
+                }
+            }
+        }
+    }
 }
 class FilterFactory   (private val dao: MealsDao, private val retrofit: SimpleService): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
