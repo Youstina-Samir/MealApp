@@ -9,7 +9,7 @@ import com.example.myapplication.R
 
 class AccountActivity : AppCompatActivity() {
     lateinit var homebtn:Button
-    lateinit var signupbtn:Button
+    lateinit var newAccount:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,6 +19,11 @@ class AccountActivity : AppCompatActivity() {
             val outIntent = Intent (this , MainActivity::class.java)
             startActivity(outIntent)
         })
+        newAccount=findViewById(R.id.createAccountBtn)
+        newAccount.setOnClickListener({
+            val intent=Intent(this,SignActivity::class.java)
+            startActivity(intent)
+        } )
         /*
         signupbtn=findViewById(R.id.signupbtn)
         signupbtn.setOnClickListener({

@@ -125,24 +125,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/signupbtn"
+        android:id="@+id/createAccountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="88dp"
         android:text="@string/create_account"
         app:layout_constraintBottom_toTopOf="@+id/accountbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/loginFragmentContainerView"
-        android:layout_width="306dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountMailView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

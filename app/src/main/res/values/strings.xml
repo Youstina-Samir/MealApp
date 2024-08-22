@@ -40,4 +40,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_meals_detials">MealsDetials</string>
+    <string name="sign_up">Sign up\n</string>
+    <string name="already_reg">Already registered? Login</string>
+    <string name="login">Login\n</string>
+    <string name="welcomeback">Welcomew back!\n</string>
+    <string name="not_yet_reg">Not yet registered? Signup\n</string>
 </resources>

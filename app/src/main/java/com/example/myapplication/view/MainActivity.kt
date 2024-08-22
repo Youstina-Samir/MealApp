@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerViewCountries: RecyclerView
     lateinit var textView: TextView
     lateinit var swip : SwipeRefreshLayout
-    private lateinit var mAuth : FirebaseAuth
     //lateinit var category: String
 
 
@@ -53,10 +52,12 @@ class MainActivity : AppCompatActivity() {
 
         setUpViewModel()
 
-        mAuth = FirebaseAuth.getInstance()
-        val currentUser = mAuth.currentUser
+
+        val currentUser =  FirebaseAuth.getInstance().currentUser
+        textView = findViewById(R.id.textviewmsg)
+        textView.text = "Hello, " + currentUser?.displayName
         Handler().postDelayed({
-            if (currentUser != null) {
+            if (currentUser!=null ) {
                /* val Mainintent = Intent(this, MainActivity::class.java)
                 startActivity(Mainintent)*/
                 Toast.makeText(this, "Welcome back", Toast.LENGTH_SHORT).show()
