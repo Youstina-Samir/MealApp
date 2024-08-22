@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
 import com.google.android.material.snackbar.Snackbar
@@ -63,7 +64,9 @@ class favActivity : AppCompatActivity() , OnButtonClick {
        Toast.makeText(this,"Meal  alreayd Added to Favourites", Toast.LENGTH_SHORT).show()
     }
 
+override fun favbtnForMealDescritpion(meal: MealDescription) {
 
+}
 
 
     override fun deletebtnclick(meal: Meals) {

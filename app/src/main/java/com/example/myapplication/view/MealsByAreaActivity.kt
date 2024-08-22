@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.R
@@ -73,6 +74,10 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
     }
 
     override fun deletebtnclick(meal: Meals) {
+        TODO("Not yet implemented")
+    }
+
+    override fun favbtnForMealDescritpion(meal: MealDescription) {
         TODO("Not yet implemented")
     }
 }

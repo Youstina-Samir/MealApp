@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.Model.Database.MealsDao
+import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.MealList
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.netwrok.SimpleService
@@ -16,6 +17,8 @@ import kotlinx.coroutines.withContext
 class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleService) : ViewModel() {
     private val _Meals = MutableLiveData<ArrayList<Meals>>()
     val Meals: LiveData<ArrayList<Meals>> = _Meals
+    private val _Meals2 = MutableLiveData<ArrayList<MealDescription>>()
+    val Meals2: LiveData<ArrayList<MealDescription>> = _Meals2
     private val _msg = MutableLiveData<String>()
     val msg: LiveData<String> = _msg
 
@@ -27,6 +30,18 @@ class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleSe
                     _msg.postValue("No products found")
                 } else {
                     _Meals.postValue(resultMeals.body()?.mealsArrayList!!)
+                }
+            }
+        }
+    }
+    fun getMealsByName(meal: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val resultMeals = retrofit.getMealByName(meal)
+            withContext(Dispatchers.Main) {
+                if (resultMeals.body()?.mealsDescriptionArray.isNullOrEmpty()) {
+                    _msg.postValue("No products found")
+                } else {
+                    _Meals2.postValue(resultMeals.body()?.mealsDescriptionArray!!)
                 }
             }
         }

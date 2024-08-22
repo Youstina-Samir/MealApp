@@ -14,24 +14,32 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Areas
 import com.example.myapplication.Model.Category
 import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
+import com.example.myapplication.Model.convertMealDescriptionToMeals
 import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
 import com.example.myapplication.view.MealAdapter
+import com.example.myapplication.view.MealDescriptionAdapter
 import com.example.myapplication.view.OnButtonClick
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SearchActivity : AppCompatActivity(), OnButtonClick {
     lateinit var viewModel: FilterViewModel
     lateinit var RecyclerView: RecyclerView
     lateinit var adapter: MealAdapter
+    lateinit var adapter2 : MealDescriptionAdapter
     lateinit var searchView: SearchView
     lateinit var spinner: Spinner
     lateinit var SpinnerChoice:String
@@ -46,32 +54,42 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
 
         searchView =findViewById<SearchView>(R.id.searchView)
          spinner= findViewById<Spinner>(R.id.spinner)
+        SpinnerChoice=""
 
-        var spinnerOptions = arrayOf("Category", "Nationality", "Main ingredients")
+        var spinnerOptions = arrayOf("Meal name","Category", "Nationality", "Main ingredients")
         spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerOptions)
         spinner.onItemSelectedListener= object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                SpinnerChoice="Category"
+                SpinnerChoice="Meal name"
+                setAdapterBasedOnChoice()
+
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 SpinnerChoice=spinnerOptions[position]
-
+                setAdapterBasedOnChoice()
             }
         }
         searchView.clearFocus()
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (SpinnerChoice == "Category") {
-                    viewModel.getMealsByCategory(query.toString())
-                } else if (SpinnerChoice == "Nationality") {
-                    viewModel.getMealsByArea(query.toString())
-                } else if (SpinnerChoice == "Main ingredients") {
-                    viewModel.getMealsByCategory(query.toString())
-                }
+
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+               if (SpinnerChoice == "Meal name") {
+                    viewModel.getMealsByName(newText.toString())
+                   adapter2.notifyDataSetChanged()
+               }
+               else if (SpinnerChoice == "Nationality") {
+                   viewModel.getMealsByArea(newText.toString())
+                   adapter.notifyDataSetChanged()
+               }
+                else if (SpinnerChoice == "Category") {
+                    viewModel.getMealsByCategory(newText.toString())
+                } else if (SpinnerChoice == "Main ingredients") {
+                    viewModel.getMealsByIngredient(newText.toString())
+                }
 
                 return true
             }
@@ -92,15 +110,30 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
                 adapter.notifyDataSetChanged()
             }
         }
+       val observerMeals2: Observer<ArrayList<MealDescription>> = object : Observer<ArrayList<MealDescription>> {
+            override fun onChanged(value: ArrayList<MealDescription>) {
+                adapter2.meallist = value
+                adapter2.notifyDataSetChanged()
+            }
+        }
         viewModel.msg.observe(this, observerMsg)
         viewModel.Meals.observe(this, observerMeals)
+        viewModel.Meals2.observe(this, observerMeals2)
 
         RecyclerView= findViewById(R.id.RecyclerViewerSearch)
         RecyclerView.layoutManager= LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
         adapter= MealAdapter(arrayListOf(), this ,this)
-        RecyclerView.adapter=adapter
+        adapter2= MealDescriptionAdapter(arrayListOf(), this ,this)
 
 
+
+
+    }
+    private fun setAdapterBasedOnChoice() {
+        if(SpinnerChoice=="Meal name")
+        { RecyclerView.adapter=adapter2}
+        else
+        {  RecyclerView.adapter=adapter}
     }
     private fun setUpViewModel() {
         val retrofit = RetroBuilder.service
@@ -110,9 +143,32 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
-        TODO("Not yet implemented")
-    }
+        lifecycleScope.launch {
+            var result:Long
+            withContext(Dispatchers.IO) {
+                result= MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(meal)
+            }
+            if (result>0){
+                Toast.makeText(this@SearchActivity,"Meal Added to Favourites", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(this@SearchActivity,"Meal Not Added to Favourites", Toast.LENGTH_SHORT).show()
+            }
+        }    }
 
+    override fun favbtnForMealDescritpion(meal: MealDescription) {
+        lifecycleScope.launch {
+            val mealToSave = convertMealDescriptionToMeals(meal)
+            var result: Long
+            withContext(Dispatchers.IO) {
+                result = MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(mealToSave)
+            }
+            if (result > 0) {
+                Toast.makeText(this@SearchActivity, "Meal Added to Favourites", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@SearchActivity, "Meal Not Added to Favourites", Toast.LENGTH_SHORT).show()
+            }
+        }    }
     override fun deletebtnclick(meal: Meals) {
         TODO("Not yet implemented")
     }

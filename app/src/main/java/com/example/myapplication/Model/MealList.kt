@@ -81,6 +81,14 @@ data class MealDescription(
 
 )
 
+fun convertMealDescriptionToMeals(mealDescription: MealDescription): Meals {
+    return Meals(
+        idMeal = mealDescription.idMeal,
+        strMeal = mealDescription.strMeal.toString(),
+        strMealThumb= mealDescription.strMealThumb,
+
+    )
+}
 /*
 data class Meals (
     @SerializedName("strMeal"      ) var strMeal      : String? = null,

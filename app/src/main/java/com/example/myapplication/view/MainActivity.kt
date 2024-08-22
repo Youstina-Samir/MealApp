@@ -2,6 +2,7 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -24,6 +25,7 @@ import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.SearchActivity
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     lateinit var favbtn: Button
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerViewCountries: RecyclerView
     lateinit var textView: TextView
     lateinit var swip : SwipeRefreshLayout
+    private lateinit var mAuth : FirebaseAuth
     //lateinit var category: String
 
 
@@ -49,6 +52,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setUpViewModel()
+
+        mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        Handler().postDelayed({
+            if (currentUser != null) {
+               /* val Mainintent = Intent(this, MainActivity::class.java)
+                startActivity(Mainintent)*/
+                Toast.makeText(this, "Welcome back", Toast.LENGTH_SHORT).show()
+            } else {
+                val signIntent = Intent(this, SignActivity::class.java)
+                startActivity(signIntent)
+            }
+        },2000)
 
         viewModel.getCategories()
         viewModel.getCountries()

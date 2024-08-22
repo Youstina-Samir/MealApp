@@ -27,6 +27,7 @@ interface SimpleService {
     @GET("api/json/v1/1/filter.php")
     suspend fun getMealsByIngredient(@Query("i") ingredient: String): Response<MealList>
 
+
 }
 
 

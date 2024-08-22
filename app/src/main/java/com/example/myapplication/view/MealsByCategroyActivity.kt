@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
 import com.example.myapplication.Model.netwrok.RetroBuilder
@@ -125,5 +126,9 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
                 Snackbar.make(mealsRecyclerView, "Meal Not Removed", Snackbar.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun favbtnForMealDescritpion(meal: MealDescription) {
+        TODO("Not yet implemented")
     }
 }
