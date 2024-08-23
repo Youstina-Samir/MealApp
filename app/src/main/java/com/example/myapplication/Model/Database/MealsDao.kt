@@ -15,5 +15,7 @@ interface MealsDao {
     suspend fun delete(meal: Meals) : Int
     @Query("SELECT * FROM Meals_table")
     suspend fun getAll(): List<Meals>
+    /*@Query("SELECT * FROM Meals_table WHERE userID = :userId")
+    suspend fun getFavoritesForUser(userId: String): List<Meals>*/
 
 }

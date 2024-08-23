@@ -3,6 +3,7 @@ package com.example.myapplication.Model
 import androidx.annotation.NonNull
 import com.google.gson.annotations.SerializedName
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 
@@ -19,7 +20,10 @@ data class Meals(
     @SerializedName("strMeal") var strMeal: String = "", // Non-nullable with default value
     @SerializedName("strMealThumb") var strMealThumb: String? = null, // Nullable for Retrofit
     @SerializedName("idMeal") var idMeal: String? = null // Nullable for Retrofit
-)
+){
+    @Ignore // Tell Room to ignore this property
+    var userId: String? = null // Non-persistent property for user ID
+}
 
 data class MealDescriptionArray(
     @SerializedName("meals" ) var mealsDescriptionArray : ArrayList<MealDescription> = arrayListOf()

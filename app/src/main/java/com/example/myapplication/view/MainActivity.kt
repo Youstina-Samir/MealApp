@@ -25,6 +25,10 @@ import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.SearchActivity
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
+import com.example.myapplication.view.signIn.SignActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +43,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerViewCountries: RecyclerView
     lateinit var textView: TextView
     lateinit var swip : SwipeRefreshLayout
+    lateinit var userID: String
+    private lateinit var mAuth : FirebaseAuth
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
     //lateinit var category: String
 
 
@@ -50,22 +57,32 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+
         setUpViewModel()
 
+        mAuth = FirebaseAuth.getInstance()
+        val gso = getGoogleSignInOptions()
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        val currentUser =  FirebaseAuth.getInstance().currentUser
         textView = findViewById(R.id.textviewmsg)
-        textView.text = "Hello, " + currentUser?.displayName
-        Handler().postDelayed({
-            if (currentUser!=null ) {
-               /* val Mainintent = Intent(this, MainActivity::class.java)
-                startActivity(Mainintent)*/
-                Toast.makeText(this, "Welcome back", Toast.LENGTH_SHORT).show()
-            } else {
-                val signIntent = Intent(this, SignActivity::class.java)
-                startActivity(signIntent)
-            }
-        },2000)
+        textView.text = "Hello guest !"
+
+        mAuth.addAuthStateListener { auth ->
+            Handler(mainLooper).postDelayed({
+                val user = auth.currentUser
+                if (user != null) {
+                    val userName = user.displayName
+                    userID= FirebaseAuth.getInstance().currentUser!!.uid
+                    textView.text = "Welcome, $userName"
+                } /*else {
+                    // No signed-in user, start SignInActivity
+                    val signIntent = Intent(this, SignActivity::class.java)
+                    startActivity(signIntent)
+                }*/
+            }, 500)}
+
+      //  val currentUser =  FirebaseAuth.getInstance().currentUser
+
 
         viewModel.getCategories()
         viewModel.getCountries()
@@ -120,6 +137,7 @@ class MainActivity : AppCompatActivity() {
             accountbtn = findViewById(R.id.accountbtn)
             accountbtn.setOnClickListener({
                 val outIntent = Intent(this, AccountActivity::class.java)
+
                 startActivity(outIntent)
             })
             searchbtn=findViewById(R.id.searchbtn)
@@ -136,6 +154,13 @@ class MainActivity : AppCompatActivity() {
         val factory=MainFactory(dao , retrofit)
         viewModel= ViewModelProvider(this,factory).get(MainActivityViewModel::class.java)
     }
-    }
 
+
+    private fun getGoogleSignInOptions(): GoogleSignInOptions {
+        return GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+    }
+    }
 

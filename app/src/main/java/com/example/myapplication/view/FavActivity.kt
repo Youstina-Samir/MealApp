@@ -3,6 +3,7 @@ package com.example.myapplication.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,7 @@ import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,10 +40,18 @@ class favActivity : AppCompatActivity() , OnButtonClick {
         recycler.adapter = adapter
 
         lifecycleScope.launch {
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
             var storedMeals: List<Meals>
             withContext(Dispatchers.IO) {
                 storedMeals = MealsDatabase.getinstanceDatabase(this@favActivity).getmealsDao().getAll()
             }
+            val filteredMeals = if (userId != null) {
+            storedMeals.filter { it.userId == userId }.also {
+                Log.d("FavActivity", "Filtered meals for userId $userId: $it") // Log filtered meals
+            }
+        } else {
+            emptyList()
+        }
             adapter.meallist=storedMeals
             adapter.notifyDataSetChanged()
         }

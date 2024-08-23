@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="140dp"
-        android:text="@string/your_name"
+        android:text="@string/id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,18 +101,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/your_email"
-        app:layout_constraintStart_toStartOf="@+id/NameView"
-        app:layout_constraintTop_toBottomOf="@+id/NameView" />
+        app:layout_constraintStart_toStartOf="@+id/IDview"
+        app:layout_constraintTop_toBottomOf="@+id/IDview" />
 
     <TextView
-        android:id="@+id/NameView"
+        android:id="@+id/IDview"
         android:layout_width="259dp"
         android:layout_height="23dp"
         android:layout_marginTop="20dp"
         android:singleLine="true"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:text="your name" />
+        tools:text="your ID" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -125,14 +125,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/createAccountBtn"
+        android:id="@+id/signintbn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
-        android:text="@string/create_account"
+        android:text="@string/action_sign_in"
         app:layout_constraintBottom_toTopOf="@+id/accountbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/signoutbtn"
+        android:layout_width="170dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/signout"
+        app:layout_constraintBottom_toTopOf="@+id/signintbn"
+        app:layout_constraintStart_toStartOf="@+id/signintbn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,4 +45,7 @@
     <string name="login">Login\n</string>
     <string name="welcomeback">Welcomew back!\n</string>
     <string name="not_yet_reg">Not yet registered? Signup\n</string>
+    <string name="id">Your ID\n</string>
+    <string name="signout">Sign out\n</string>
+    <string name="guest">Or browse as a guest</string>
 </resources>

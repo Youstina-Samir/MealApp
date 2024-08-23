@@ -23,6 +23,7 @@ import com.example.myapplication.ViewModel.FilterViewModel
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -99,6 +100,8 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
 
     override fun favbtnclick(meal: Meals) {
             lifecycleScope.launch {
+                Log.d("added to fav", "User ID: ${FirebaseAuth.getInstance().currentUser?.uid}")
+                meal.userId = FirebaseAuth.getInstance().currentUser?.uid
                 var result:Long
                 withContext(Dispatchers.IO) {
                     result= MealsDatabase.getinstanceDatabase(this@MealsByCategory).getmealsDao().insert(meal)
