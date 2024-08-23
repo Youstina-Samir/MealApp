@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +19,11 @@ import com.example.myapplication.Model.FavoriteMeal
 import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.favoriteMealToMeal
+import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.R
+import com.example.myapplication.ViewModel.FavFactory
+import com.example.myapplication.ViewModel.FavViewModel
+import com.example.myapplication.ViewModel.MainFactory
 import com.example.myapplication.view.adapters.MealAdapter
 import com.example.myapplication.view.signIn.AccountActivity
 import com.google.android.material.snackbar.Snackbar
@@ -33,16 +39,34 @@ class favActivity : AppCompatActivity() , OnButtonClick {
     lateinit var deletebtn: Button
     lateinit var recycler: RecyclerView
     lateinit var adapter: MealAdapter
+    lateinit var viewModel: FavViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_fav)
+        setUpViewModel()
         recycler=findViewById(R.id.favRecycler)
         adapter= MealAdapter(ArrayList<Meals>(),this,this)
         recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycler.adapter = adapter
 
+        viewModel.getFavMeals()
+
+        val observerMsg: Observer<String> = object : Observer<String> {
+            override fun onChanged(value: String) {
+                Toast.makeText(this@favActivity, value, Toast.LENGTH_SHORT).show()
+
+            }
+        }
+        val observerProducts: Observer<List<Meals>> = object : Observer<List<Meals>> {
+            override fun onChanged(value: List<Meals>) {
+                adapter.meallist = value
+                adapter.notifyDataSetChanged()
+            }
+        }
+        viewModel.msg.observe(this, observerMsg)
+        viewModel.Meals.observe(this, observerProducts)
         /*lifecycleScope.launch {
             val userId = FirebaseAuth.getInstance().currentUser?.uid
             var storedMeals: List<FavoriteMeal>
@@ -60,7 +84,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
             adapter.notifyDataSetChanged()
         }
 
-         */
+
         lifecycleScope.launch {
             val userId = FirebaseAuth.getInstance().currentUser?.uid
             var storedMeals: List<FavoriteMeal>
@@ -76,7 +100,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
            var mealsList = filteredMeals.map { favoriteMealToMeal(it) }
             adapter.meallist = mealsList // Update adapter with Meals list
             adapter.notifyDataSetChanged()
-        }
+        }*/
         homebtn= findViewById(R.id.btnhome)
        homebtn.setOnClickListener({
             val outIntent = Intent (this , MainActivity::class.java)
@@ -92,7 +116,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
-       Toast.makeText(this,"Meal  alreayd Added to Favourites", Toast.LENGTH_SHORT).show()
+        viewModel.addMealToFav(meal)
     }
 
 override fun favbtnForMealDescritpion(meal: MealDescription) {
@@ -101,7 +125,8 @@ override fun favbtnForMealDescritpion(meal: MealDescription) {
 
 
     override fun deletebtnclick(meal: Meals) {
-        if(FirebaseAuth.getInstance().currentUser==null) {
+        viewModel.deleteMealFromFav(meal)
+       /* if(FirebaseAuth.getInstance().currentUser==null) {
             Toast.makeText(this, "Please Sign in to remove meal from Favourites", Toast.LENGTH_SHORT)
                 .show()
         }
@@ -130,8 +155,15 @@ override fun favbtnForMealDescritpion(meal: MealDescription) {
                 adapter.meallist = mealsList
                 adapter.notifyDataSetChanged()
             }
-        }}
+        }}*/
 
+
+    }
+    fun setUpViewModel(){
+        val retrofit = RetroBuilder.service
+        val dao = MealsDatabase.getinstanceDatabase(this).getmealsDao()
+        val factory= FavFactory(dao , retrofit)
+        viewModel= ViewModelProvider(this,factory).get(FavViewModel::class.java)
 
     }
 }

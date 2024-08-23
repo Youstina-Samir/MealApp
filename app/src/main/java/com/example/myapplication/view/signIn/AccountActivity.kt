@@ -39,7 +39,7 @@ class AccountActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
             user = FirebaseAuth.getInstance().currentUser
             IDtext.text=user?.uid
-            emailtext.text = userEmail ?: "You didn't sign in or register" // Handle null case
+            emailtext.text =  user?.email ?: "You didn't sign in or register" // Handle null case
 
         }
         homebtn.setOnClickListener({
