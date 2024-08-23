@@ -102,7 +102,8 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
-        if(FirebaseAuth.getInstance().currentUser==null){
+        viewModel.addMealToFav(meal)
+     /*  if(FirebaseAuth.getInstance().currentUser==null){
             Toast.makeText(this,"Please Sign in to add meal to Favourites", Toast.LENGTH_SHORT).show()
         } else{
             lifecycleScope.launch {
@@ -121,12 +122,14 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
                     Toast.makeText(this@MealsByCategory,"Meal Not Added to Favourites", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
+        }*/
     }
 
 
 
    override fun deletebtnclick(meal: Meals) {
+       viewModel.deleteMealFromFav(meal)
+       /*
        if(FirebaseAuth.getInstance().currentUser?.uid==null) {
            Toast.makeText(this, "Please Sign in to remove meal from Favourites", Toast.LENGTH_SHORT)
                .show()
@@ -152,10 +155,8 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
                        .show()
                } }else {Toast.makeText(this@MealsByCategory,"meal not found in favourites", Toast.LENGTH_SHORT).show()}
            }
-       }
+       }*/
     }
 
-    override fun favbtnForMealDescritpion(meal: MealDescription) {
-        TODO("Not yet implemented")
-    }
+
 }

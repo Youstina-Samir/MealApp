@@ -79,7 +79,7 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
                }
                else if (SpinnerChoice == "Nationality") {
                    viewModel.getMealsByArea(newText.toString())
-                   adapter.notifyDataSetChanged()
+                   //adapter.notifyDataSetChanged()
                }
                 else if (SpinnerChoice == "Category") {
                     viewModel.getMealsByCategory(newText.toString())
@@ -139,7 +139,8 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
-        lifecycleScope.launch {
+       viewModel.addMealToFav(meal)
+       /* lifecycleScope.launch {
             var result:Long
             withContext(Dispatchers.IO) {
                 var userID= FirebaseAuth.getInstance().currentUser?.uid
@@ -153,25 +154,12 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
             else{
                 Toast.makeText(this@SearchActivity,"Meal Not Added to Favourites", Toast.LENGTH_SHORT).show()
             }
-        }    }
-
-    override fun favbtnForMealDescritpion(meal: MealDescription) {
-        lifecycleScope.launch {
-            val mealToSave = convertMealDescriptionToMeals(meal)
-            var userID= FirebaseAuth.getInstance().currentUser?.uid
-            Log.d("added to fav", "User ID: ${userID}")
-            val FavMeal= ConvertMealsToFav(mealToSave,userID!!)
-            var result: Long
-            withContext(Dispatchers.IO) {
-                result = MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(FavMeal)
-            }
-            if (result > 0) {
-                Toast.makeText(this@SearchActivity, "Meal Added to Favourites", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this@SearchActivity, "Meal Not Added to Favourites", Toast.LENGTH_SHORT).show()
-            }
-        }    }
-    override fun deletebtnclick(meal: Meals) {
-        TODO("Not yet implemented")
+        }*/
     }
+
+
+
+
+    override fun deletebtnclick(meal: Meals) {
+        viewModel.deleteMealFromFav(meal)    }
 }

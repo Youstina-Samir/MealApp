@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.Model.MealDescription
+import com.example.myapplication.Model.convertMealDescriptionToMeals
 import com.example.myapplication.R
 import com.example.myapplication.view.MealDetails
 import com.example.myapplication.view.OnButtonClick
@@ -45,11 +46,13 @@ class MealDescriptionAdapter(var meallist: List<MealDescription>, val context: C
 
         holder.name.text=meallist[position].strMeal
        holder.favbtn.setOnClickListener({
-            OnButtonClick.favbtnForMealDescritpion(meallist[position])
+           val mealTosave = convertMealDescriptionToMeals(meallist[position])
+           OnButtonClick.favbtnclick(mealTosave)
         })
-        /*holder.deletebtn.setOnClickListener({
-            OnButtonClick.deletebtnclick(meallist[position])
-        })*/
+        holder.deletebtn.setOnClickListener({
+            val mealToDelete = convertMealDescriptionToMeals(meallist[position])
+            OnButtonClick.deletebtnclick(mealToDelete)
+        })
         holder.row.setOnClickListener({
             Toast.makeText(context,meallist[position].strMeal, Toast.LENGTH_SHORT ).show()
             val outIntent = Intent (context ,   MealDetails::class.java);

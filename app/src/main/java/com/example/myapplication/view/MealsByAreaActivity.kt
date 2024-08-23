@@ -69,14 +69,12 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
-Toast.makeText(this,"implement", Toast.LENGTH_SHORT).show()
+        viewModel.addMealToFav(meal)
     }
 
     override fun deletebtnclick(meal: Meals) {
-        Toast.makeText(this,"implement", Toast.LENGTH_SHORT).show()
+        viewModel.deleteMealFromFav(meal)
     }
 
-    override fun favbtnForMealDescritpion(meal: MealDescription) {
-        Toast.makeText(this,"implement", Toast.LENGTH_SHORT).show()
-    }
+
 }

@@ -67,6 +67,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
         }
         viewModel.msg.observe(this, observerMsg)
         viewModel.Meals.observe(this, observerProducts)
+
         /*lifecycleScope.launch {
             val userId = FirebaseAuth.getInstance().currentUser?.uid
             var storedMeals: List<FavoriteMeal>
@@ -101,6 +102,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
             adapter.meallist = mealsList // Update adapter with Meals list
             adapter.notifyDataSetChanged()
         }*/
+
         homebtn= findViewById(R.id.btnhome)
        homebtn.setOnClickListener({
             val outIntent = Intent (this , MainActivity::class.java)
@@ -119,9 +121,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
         viewModel.addMealToFav(meal)
     }
 
-override fun favbtnForMealDescritpion(meal: MealDescription) {
 
-}
 
 
     override fun deletebtnclick(meal: Meals) {
