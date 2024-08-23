@@ -58,16 +58,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-
         setUpViewModel()
-
         mAuth = FirebaseAuth.getInstance()
         val gso = getGoogleSignInOptions()
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
         textView = findViewById(R.id.textviewmsg)
         textView.text = "Hello guest !"
-
         mAuth.addAuthStateListener { auth ->
             Handler(mainLooper).postDelayed({
                 val user = auth.currentUser
@@ -138,7 +134,6 @@ class MainActivity : AppCompatActivity() {
             accountbtn = findViewById(R.id.accountbtn)
             accountbtn.setOnClickListener({
                 val outIntent = Intent(this, AccountActivity::class.java)
-
                 startActivity(outIntent)
             })
             searchbtn=findViewById(R.id.searchbtn)

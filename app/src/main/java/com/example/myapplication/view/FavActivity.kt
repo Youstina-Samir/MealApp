@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +42,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
     lateinit var recycler: RecyclerView
     lateinit var adapter: MealAdapter
     lateinit var viewModel: FavViewModel
+    lateinit var nofav: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +50,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
         setContentView(R.layout.activity_fav)
         setUpViewModel()
         recycler=findViewById(R.id.favRecycler)
+        nofav=findViewById(R.id.nofav)
         adapter= MealAdapter(ArrayList<Meals>(),this,this)
         recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycler.adapter = adapter
@@ -61,6 +65,12 @@ class favActivity : AppCompatActivity() , OnButtonClick {
         }
         val observerProducts: Observer<List<Meals>> = object : Observer<List<Meals>> {
             override fun onChanged(value: List<Meals>) {
+                if (value.isEmpty()) {
+                    nofav.text = "Nothing added to favorites yet"
+                    nofav.visibility = View.VISIBLE // Ensure it's visible
+                } else {
+                    nofav.text = ""
+                }
                 adapter.meallist = value
                 adapter.notifyDataSetChanged()
             }
@@ -68,40 +78,7 @@ class favActivity : AppCompatActivity() , OnButtonClick {
         viewModel.msg.observe(this, observerMsg)
         viewModel.Meals.observe(this, observerProducts)
 
-        /*lifecycleScope.launch {
-            val userId = FirebaseAuth.getInstance().currentUser?.uid
-            var storedMeals: List<FavoriteMeal>
-            withContext(Dispatchers.IO) {
-                storedMeals = MealsDatabase.getinstanceDatabase(this@favActivity).getmealsDao().getAll()
-            }
-            val filteredMeals = if (userId != null) {
-            storedMeals.filter { it.userId == userId }.also {
-                Log.d("FavActivity", "Filtered meals for userId $userId: $it") // Log filtered meals
-            }
-        } else {
-            emptyList()
-        }
-            adapter.meallist=storedMeals
-            adapter.notifyDataSetChanged()
-        }
 
-
-        lifecycleScope.launch {
-            val userId = FirebaseAuth.getInstance().currentUser?.uid
-            var storedMeals: List<FavoriteMeal>
-            withContext(Dispatchers.IO) {
-                storedMeals = MealsDatabase.getinstanceDatabase(this@favActivity).getmealsDao().getAll()
-            }
-            val filteredMeals = if (userId != null) {
-                storedMeals.filter { it.userId == userId }
-            } else {
-                emptyList()
-            }
-            // Convert FavoriteMeal to Mealsval
-           var mealsList = filteredMeals.map { favoriteMealToMeal(it) }
-            adapter.meallist = mealsList // Update adapter with Meals list
-            adapter.notifyDataSetChanged()
-        }*/
 
         homebtn= findViewById(R.id.btnhome)
        homebtn.setOnClickListener({

@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.view.MainActivity
+import com.example.myapplication.view.SearchActivity
+import com.example.myapplication.view.favActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class AccountActivity : AppCompatActivity() {
@@ -15,6 +17,7 @@ class AccountActivity : AppCompatActivity() {
     lateinit var newAccount:Button
     lateinit var signOutButton: Button
     lateinit var emailtext:TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,17 @@ class AccountActivity : AppCompatActivity() {
             emailtext.text =  user?.email ?: "You didn't sign in or register" // Handle null case
 
         }
+        val favbtn = findViewById<Button>(R.id.favbtn)
+        favbtn.setOnClickListener({
+            val outIntent = Intent(this, favActivity::class.java)
+            startActivity(outIntent)
+        })
+
+        val searchbtn=findViewById<Button>(R.id.searchbtn)
+        searchbtn.setOnClickListener({
+            val outIntent = Intent(this, SearchActivity::class.java)
+            startActivity(outIntent)
+        })
         homebtn.setOnClickListener({
             val outIntent = Intent (this , MainActivity::class.java)
             startActivity(outIntent)

@@ -1,10 +1,12 @@
 package com.example.myapplication.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.SearchView
 import android.widget.Spinner
 import android.widget.Toast
@@ -26,6 +28,7 @@ import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
 import com.example.myapplication.view.adapters.MealAdapter
 import com.example.myapplication.view.adapters.MealDescriptionAdapter
+import com.example.myapplication.view.signIn.AccountActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -121,8 +124,26 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
         adapter= MealAdapter(arrayListOf(), this ,this)
         adapter2= MealDescriptionAdapter(arrayListOf(), this ,this)
 
-
-
+        val  homebtn= findViewById<Button>(R.id.btnhome)
+        homebtn.setOnClickListener({
+            val outIntent = Intent (this , MainActivity::class.java)
+            startActivity(outIntent)
+        })
+        val favbtn = findViewById<Button>(R.id.favbtn)
+        favbtn.setOnClickListener({
+            val outIntent = Intent(this, favActivity::class.java)
+            startActivity(outIntent)
+        })
+        val accountbtn =findViewById<Button>(R.id.accountbtn)
+        accountbtn.setOnClickListener({
+            val outIntent = Intent(this, AccountActivity::class.java)
+            startActivity(outIntent)
+        })
+        val searchbtn=findViewById<Button>(R.id.searchbtn)
+        searchbtn.setOnClickListener({
+            val outIntent = Intent(this, SearchActivity::class.java)
+            startActivity(outIntent)
+        })
 
     }
     private fun setAdapterBasedOnChoice() {

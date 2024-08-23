@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
-import com.example.myapplication.view.MealDetails
+import com.example.myapplication.view.MealDescription
 import com.example.myapplication.view.OnButtonClick
 import com.google.firebase.auth.FirebaseAuth
 
@@ -21,7 +21,7 @@ class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonC
     class MealViewHolder (val row: View): RecyclerView.ViewHolder(row){
         val img =row.findViewById<ImageView>(R.id.mealimg)
         val name = row.findViewById<TextView>(R.id.mealName)
-        val desc = row.findViewById<TextView>(R.id.mealDesc)
+        val desc = row.findViewById<TextView>(R.id.mealdesc)
         val favbtn = row.findViewById<Button>(R.id.addTOFavBtn)
         val deletebtn = row.findViewById<Button>(R.id.deletebtn)
         var userID= FirebaseAuth.getInstance().currentUser?.uid
@@ -47,6 +47,7 @@ class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonC
 
 
         holder.name.text=meallist[position].strMeal
+        holder.desc.text=meallist[position].idMeal
         holder.favbtn.setOnClickListener({
          //   OnButtonClick.favbtnclick(ConvertMealsToFavmeal(meallist[position],holder.userID!!))
             OnButtonClick.favbtnclick(meallist[position])
@@ -57,7 +58,7 @@ class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonC
         })
        holder.row.setOnClickListener({
             Toast.makeText(context,meallist[position].strMeal, Toast.LENGTH_SHORT ).show()
-            val outIntent = Intent (context ,   MealDetails::class.java);
+            val outIntent = Intent (context ,   MealDescription::class.java);
             outIntent.putExtra("MealName" ,meallist[position].strMeal)
             outIntent.putExtra("MealImg",meallist[position].strMealThumb )
             context.startActivity(outIntent)

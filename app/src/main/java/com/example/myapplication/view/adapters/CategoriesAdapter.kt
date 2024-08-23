@@ -34,7 +34,7 @@ class CategoriesAdapter(var categorylist: ArrayList<Category>, val context: Cont
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.name.text=categorylist[position].strCategory
-        holder.desc.text=categorylist[position].strCategoryDescription
+       // holder.desc.text=categorylist[position].strCategoryDescription
 
         Glide.with(context)
             .load(categorylist[position].strCategoryThumb)

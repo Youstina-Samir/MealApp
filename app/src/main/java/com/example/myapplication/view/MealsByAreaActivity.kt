@@ -2,6 +2,7 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,7 @@ import com.example.myapplication.R
 import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
 import com.example.myapplication.view.adapters.MealAdapter
+import com.example.myapplication.view.signIn.AccountActivity
 
 class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
     lateinit var recyclerView: RecyclerView
@@ -57,6 +59,27 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
         adapter = MealAdapter(ArrayList(), this, this)
         recyclerView.layoutManager= LinearLayoutManager(this@MealsByAreaActivity, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
+
+      val  homebtn= findViewById<Button>(R.id.btnhome)
+        homebtn.setOnClickListener({
+            val outIntent = Intent (this , MainActivity::class.java)
+            startActivity(outIntent)
+        })
+        val favbtn = findViewById<Button>(R.id.favbtn)
+        favbtn.setOnClickListener({
+            val outIntent = Intent(this, favActivity::class.java)
+            startActivity(outIntent)
+        })
+        val accountbtn =findViewById<Button>(R.id.accountbtn)
+        accountbtn.setOnClickListener({
+            val outIntent = Intent(this, AccountActivity::class.java)
+            startActivity(outIntent)
+        })
+        val searchbtn=findViewById<Button>(R.id.searchbtn)
+        searchbtn.setOnClickListener({
+            val outIntent = Intent(this, SearchActivity::class.java)
+            startActivity(outIntent)
+        })
 
     }
 

@@ -48,4 +48,6 @@
     <string name="id">Your ID\n</string>
     <string name="signout">Sign out\n</string>
     <string name="guest">Or browse as a guest</string>
+    <string name="tab_ingredients">ingredients</string>
+    <string name="tab_instructions">"instructions  "</string>
 </resources>
