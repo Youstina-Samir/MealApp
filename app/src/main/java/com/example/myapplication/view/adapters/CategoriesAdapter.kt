@@ -1,4 +1,4 @@
-package com.example.myapplication.view
+package com.example.myapplication.view.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.Model.Category
 import com.example.myapplication.R
+import com.example.myapplication.view.MealsByCategory
 
 class CategoriesAdapter(var categorylist: ArrayList<Category>, val context: Context):RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
     class CategoryViewHolder(val row:View): RecyclerView.ViewHolder(row) {

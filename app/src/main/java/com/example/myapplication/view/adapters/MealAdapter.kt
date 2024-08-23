@@ -1,4 +1,4 @@
-package com.example.myapplication.view
+package com.example.myapplication.view.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
+import com.example.myapplication.view.MealDetails
+import com.example.myapplication.view.OnButtonClick
+import com.google.firebase.auth.FirebaseAuth
 
 class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonClick: OnButtonClick): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
     class MealViewHolder (val row: View): RecyclerView.ViewHolder(row){
@@ -21,6 +24,8 @@ class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonC
         val desc = row.findViewById<TextView>(R.id.mealDesc)
         val favbtn = row.findViewById<Button>(R.id.addTOFavBtn)
         val deletebtn = row.findViewById<Button>(R.id.deletebtn)
+        var userID= FirebaseAuth.getInstance().currentUser?.uid
+
     }
 
     override fun onCreateViewHolder(recycler: ViewGroup, viewType: Int): MealViewHolder {
@@ -43,9 +48,11 @@ class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonC
 
         holder.name.text=meallist[position].strMeal
         holder.favbtn.setOnClickListener({
+         //   OnButtonClick.favbtnclick(ConvertMealsToFavmeal(meallist[position],holder.userID!!))
             OnButtonClick.favbtnclick(meallist[position])
         })
         holder.deletebtn.setOnClickListener({
+           // OnButtonClick.deletebtnclick(ConvertMealsToFavmeal(meallist[position],holder.userID!!))
             OnButtonClick.deletebtnclick(meallist[position])
         })
        holder.row.setOnClickListener({

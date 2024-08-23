@@ -19,13 +19,14 @@ import com.example.myapplication.Model.Database.MealsDatabase
 
 //import androidx.core.view.ViewCompat
 //import androidx.core.view.WindowInsetsCompat
-//import com.example.myapplication.view.CategoriesAdapter
+//import com.example.myapplication.view.adapters.CategoriesAdapter
 import com.example.myapplication.R
 import com.example.myapplication.Model.netwrok.RetroBuilder
-import com.example.myapplication.SearchActivity
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
-import com.example.myapplication.view.signIn.SignActivity
+import com.example.myapplication.view.adapters.CategoriesAdapter
+import com.example.myapplication.view.adapters.CountiresAdapter
+import com.example.myapplication.view.signIn.AccountActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

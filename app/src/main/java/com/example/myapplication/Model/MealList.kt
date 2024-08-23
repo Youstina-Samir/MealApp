@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-
+import com.example.myapplication.Model.Database.MealsDao
 
 
 data class MealList (
@@ -21,9 +21,19 @@ data class Meals(
     @SerializedName("strMealThumb") var strMealThumb: String? = null, // Nullable for Retrofit
     @SerializedName("idMeal") var idMeal: String? = null // Nullable for Retrofit
 ){
-    @Ignore // Tell Room to ignore this property
-    var userId: String? = null // Non-persistent property for user ID
+    @Ignore
+    var userId: String? = null
 }
+@Entity (tableName = "fav_table")
+data class FavoriteMeal(
+    @PrimaryKey(autoGenerate = true)
+   var id: Int = 0,
+    //var idRecord:Int =id,
+    var userId: String,
+    var strMeal: String = "", // Non-nullable with default value
+    var strMealThumb: String? = null, // Nullable for Retrofit
+   var idMeal: String? = null // Nullable for Retrofit
+)
 
 data class MealDescriptionArray(
     @SerializedName("meals" ) var mealsDescriptionArray : ArrayList<MealDescription> = arrayListOf()
@@ -93,21 +103,39 @@ fun convertMealDescriptionToMeals(mealDescription: MealDescription): Meals {
 
     )
 }
-/*
-data class Meals (
-    @SerializedName("strMeal"      ) var strMeal      : String? = null,
-    @SerializedName("strMealThumb" ) var strMealThumb : String? = null,
-    @SerializedName("idMeal"       ) var idMeal       : String? = null
+/*suspend fun convertFavmealToMeals(favMeals: List<FavoriteMeal>, mealsDao: MealsDao): List<Meals> {
+    val mealIds = favMeals.map { it.idMeal }
+    return mealsDao.getMealsByIds(mealIds)
+}
 
-)
+fun ConvertMealsToFav(meal: Meals, userId: String): FavoriteMeal {
+    return FavoriteMeal(userId = userId, idMeal = meal.idMeal ?: "")
+}*/
 
-@Entity(tableName = "Meals_table")
-data class MealsRoom(
-    @PrimaryKey
-    @NonNull
-    @SerializedName("strMeal"      ) var strMeal      : String,
-    @SerializedName("strMealThumb" ) var strMealThumb : String,
-    @SerializedName("idMeal"       ) var idMeal       : String
+fun convertFavmealToMeals(favoriteMeal: FavoriteMeal): Meals {
+    return Meals(
+        strMeal = favoriteMeal.strMeal,
+        strMealThumb = favoriteMeal.strMealThumb,
+        idMeal = favoriteMeal.idMeal
+    ).apply {
+        userId = favoriteMeal.userId
+    }
+}
 
-)
-*/
+fun ConvertMealsToFav(meal: Meals, userId: String): FavoriteMeal {
+    return FavoriteMeal(
+        userId = userId, // Explicitly pass the userId
+        strMeal = meal.strMeal,
+        strMealThumb = meal.strMealThumb,
+        idMeal = meal.idMeal
+    )
+}
+fun favoriteMealToMeal(favoriteMeal: FavoriteMeal): Meals {
+    return Meals(
+        strMeal = favoriteMeal.strMeal,
+        strMealThumb = favoriteMeal.strMealThumb,
+        idMeal = favoriteMeal.idMeal
+    ).apply {
+        userId = favoriteMeal.userId
+    }
+}

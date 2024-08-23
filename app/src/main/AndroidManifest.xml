@@ -21,7 +21,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".SearchActivity"
+            android:name=".view.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".view.MealsByAreaActivity"
@@ -33,7 +33,7 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
 
         <activity
-            android:name=".view.AccountActivity"
+            android:name=".view.signIn.AccountActivity"
             android:exported="false" />
         <activity
             android:name=".view.MealsByCategory"

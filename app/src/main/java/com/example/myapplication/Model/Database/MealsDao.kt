@@ -5,17 +5,21 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.myapplication.Model.FavoriteMeal
 import com.example.myapplication.Model.Meals
 
 @Dao
 interface MealsDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(meal: Meals) : Long
-    @Delete
-    suspend fun delete(meal: Meals) : Int
-    @Query("SELECT * FROM Meals_table")
-    suspend fun getAll(): List<Meals>
-    /*@Query("SELECT * FROM Meals_table WHERE userID = :userId")
-    suspend fun getFavoritesForUser(userId: String): List<Meals>*/
+   @Insert(onConflict = OnConflictStrategy.IGNORE)
+//     suspend fun insert(meal: Meals) : Long
+   suspend fun insert(meal: FavoriteMeal) : Long
+ @Delete
+   // suspend fun delete(meal: Meals) : Int
+   suspend fun delete(meal: FavoriteMeal) : Int
+
+   @Query("SELECT * FROM fav_table")
+    suspend fun getAll(): List<FavoriteMeal>
+
+
 
 }

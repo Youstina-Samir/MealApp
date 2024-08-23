@@ -6,8 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +17,7 @@ import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.R
 import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
+import com.example.myapplication.view.adapters.MealAdapter
 
 class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
     lateinit var recyclerView: RecyclerView
@@ -70,14 +69,14 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
-        TODO("Not yet implemented")
+Toast.makeText(this,"implement", Toast.LENGTH_SHORT).show()
     }
 
     override fun deletebtnclick(meal: Meals) {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"implement", Toast.LENGTH_SHORT).show()
     }
 
     override fun favbtnForMealDescritpion(meal: MealDescription) {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"implement", Toast.LENGTH_SHORT).show()
     }
 }

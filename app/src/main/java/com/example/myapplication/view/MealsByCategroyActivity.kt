@@ -13,15 +13,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Model.ConvertMealsToFav
 import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.FavoriteMeal
 import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
+import com.example.myapplication.Model.convertFavmealToMeals
 import com.example.myapplication.R
 import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
-import com.example.myapplication.ViewModel.MainActivityViewModel
-import com.example.myapplication.ViewModel.MainFactory
+import com.example.myapplication.view.adapters.MealAdapter
+import com.example.myapplication.view.signIn.AccountActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
@@ -99,12 +102,17 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
     }
 
     override fun favbtnclick(meal: Meals) {
+        if(FirebaseAuth.getInstance().currentUser==null){
+            Toast.makeText(this,"Please Sign in to add meal to Favourites", Toast.LENGTH_SHORT).show()
+        } else{
             lifecycleScope.launch {
-                Log.d("added to fav", "User ID: ${FirebaseAuth.getInstance().currentUser?.uid}")
-                meal.userId = FirebaseAuth.getInstance().currentUser?.uid
+               var userID= FirebaseAuth.getInstance().currentUser?.uid
+                Log.d("added to fav", "User ID: ${userID}")
+              val FavMeal= ConvertMealsToFav(meal,userID!!)
                 var result:Long
                 withContext(Dispatchers.IO) {
-                    result= MealsDatabase.getinstanceDatabase(this@MealsByCategory).getmealsDao().insert(meal)
+
+                    result= MealsDatabase.getinstanceDatabase(this@MealsByCategory).getmealsDao().insert(FavMeal)
             }
                 if (result>0){
                     Toast.makeText(this@MealsByCategory,"Meal Added to Favourites", Toast.LENGTH_SHORT).show()
@@ -113,22 +121,38 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
                     Toast.makeText(this@MealsByCategory,"Meal Not Added to Favourites", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
     }
 
 
 
-    override fun deletebtnclick(meal: Meals) {
-        lifecycleScope.launch {
-            val result: Int
-            withContext(Dispatchers.IO) {
-                 result = MealsDatabase.getinstanceDatabase(this@MealsByCategory).getmealsDao().delete(meal)
-            }
-            if (result > 0) {
-                Snackbar.make(mealsRecyclerView, "Meal Removed", Snackbar.LENGTH_SHORT).show()
-            } else {
-                Snackbar.make(mealsRecyclerView, "Meal Not Removed", Snackbar.LENGTH_SHORT).show()
-            }
-        }
+   override fun deletebtnclick(meal: Meals) {
+       if(FirebaseAuth.getInstance().currentUser?.uid==null) {
+           Toast.makeText(this, "Please Sign in to remove meal from Favourites", Toast.LENGTH_SHORT)
+               .show()
+       }
+       else{
+           lifecycleScope.launch {
+               val result: Int
+               var userID = FirebaseAuth.getInstance().currentUser?.uid
+               val FavMeal = ConvertMealsToFav(meal, userID!!)
+               val mealToDelete = MealsDatabase.getinstanceDatabase(this@MealsByCategory).getmealsDao()
+                   .getAll().firstOrNull { it.idMeal == FavMeal.idMeal && it.userId == FavMeal.userId }
+
+               Log.d("deleted from fav", "data:${FavMeal.id} ${userID}, ${FavMeal.strMeal}")
+               if (mealToDelete != null) {
+               withContext(Dispatchers.IO) {
+                   result = MealsDatabase.getinstanceDatabase(this@MealsByCategory).getmealsDao()
+                       .delete(FavMeal)
+               }
+               if (result > 0) {
+                   Snackbar.make(mealsRecyclerView, "Meal Removed", Snackbar.LENGTH_SHORT).show()
+               } else {
+                   Snackbar.make(mealsRecyclerView, "Meal Not Removed", Snackbar.LENGTH_SHORT)
+                       .show()
+               } }else {Toast.makeText(this@MealsByCategory,"meal not found in favourites", Toast.LENGTH_SHORT).show()}
+           }
+       }
     }
 
     override fun favbtnForMealDescritpion(meal: MealDescription) {

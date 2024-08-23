@@ -1,7 +1,7 @@
-package com.example.myapplication
+package com.example.myapplication.view
 
-import android.database.MatrixCursor
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -10,27 +10,23 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Model.Areas
-import com.example.myapplication.Model.Category
+import com.example.myapplication.Model.ConvertMealsToFav
 import com.example.myapplication.Model.Database.MealsDatabase
 import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.convertMealDescriptionToMeals
 import com.example.myapplication.Model.netwrok.RetroBuilder
+import com.example.myapplication.R
 import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
-import com.example.myapplication.ViewModel.MainActivityViewModel
-import com.example.myapplication.ViewModel.MainFactory
-import com.example.myapplication.view.MealAdapter
-import com.example.myapplication.view.MealDescriptionAdapter
-import com.example.myapplication.view.OnButtonClick
+import com.example.myapplication.view.adapters.MealAdapter
+import com.example.myapplication.view.adapters.MealDescriptionAdapter
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -146,7 +142,10 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
         lifecycleScope.launch {
             var result:Long
             withContext(Dispatchers.IO) {
-                result= MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(meal)
+                var userID= FirebaseAuth.getInstance().currentUser?.uid
+                Log.d("added to fav", "User ID: ${userID}")
+                val FavMeal= ConvertMealsToFav(meal,userID!!)
+                result= MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(FavMeal)
             }
             if (result>0){
                 Toast.makeText(this@SearchActivity,"Meal Added to Favourites", Toast.LENGTH_SHORT).show()
@@ -159,9 +158,12 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
     override fun favbtnForMealDescritpion(meal: MealDescription) {
         lifecycleScope.launch {
             val mealToSave = convertMealDescriptionToMeals(meal)
+            var userID= FirebaseAuth.getInstance().currentUser?.uid
+            Log.d("added to fav", "User ID: ${userID}")
+            val FavMeal= ConvertMealsToFav(mealToSave,userID!!)
             var result: Long
             withContext(Dispatchers.IO) {
-                result = MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(mealToSave)
+                result = MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao().insert(FavMeal)
             }
             if (result > 0) {
                 Toast.makeText(this@SearchActivity, "Meal Added to Favourites", Toast.LENGTH_SHORT).show()

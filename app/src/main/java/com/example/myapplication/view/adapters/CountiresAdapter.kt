@@ -1,4 +1,4 @@
-package com.example.myapplication.view
+package com.example.myapplication.view.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Areas
 import com.example.myapplication.R
+import com.example.myapplication.view.MealsByAreaActivity
 
 class CountiresAdapter (var Countireslist: ArrayList<Areas>, val context: Context): RecyclerView.Adapter<CountiresAdapter.CountiresViewHolder>() {
     class CountiresViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
