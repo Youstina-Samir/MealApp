@@ -133,7 +133,7 @@ class SearchActivity : AppCompatActivity(), OnButtonClick {
     }
     private fun setUpViewModel() {
         val retrofit = RetroBuilder.service
-        val dao = MealsDatabase.getinstanceDatabase(this).getmealsDao()
+        val dao = MealsDatabase.getinstanceDatabase(this@SearchActivity).getmealsDao()
         val factory= FilterFactory(dao , retrofit)
         viewModel= ViewModelProvider(this,factory).get(FilterViewModel::class.java)
     }
