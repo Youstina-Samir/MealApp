@@ -1,5 +1,6 @@
 package com.example.myapplication.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -70,12 +71,20 @@ lateinit var viewModel: SuggestfragViewModel
                 RandomMealCategory.text=value.body()?.Randomeals?.get(0)?.strCategory
                 RandomMealArea.text=value.body()?.Randomeals?.get(0)?.strArea
                 imgUrl=value.body()?.Randomeals?.get(0)?.strMealThumb.toString()
+
+
                 Glide.with(this@suggestMealFragment)
                     .load(imgUrl)
                     .centerCrop()
                     .into(RandomMealImg)
             }
         }
+        RandomMealImg.setOnClickListener({
+            val outIntent = Intent (this@suggestMealFragment.requireContext() ,   MealDetails::class.java)
+            outIntent.putExtra("MealName" ,  RandomMealName.text)
+            outIntent.putExtra("MealImg",imgUrl)
+           startActivity(outIntent)
+        })
         viewModel.msg.observe(viewLifecycleOwner, observerMsg)
         viewModel.RandomMeal.observe(viewLifecycleOwner, observerRandomMeal)
 
