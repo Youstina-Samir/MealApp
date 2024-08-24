@@ -33,6 +33,7 @@ class CountiresAdapter (var Countireslist: ArrayList<Areas>, val context: Contex
 
     override fun onBindViewHolder(holder: CountiresViewHolder, position: Int) {
         holder.name.text = Countireslist[position].strArea
+        holder.img.setImageResource(R.drawable.theworld)
         holder.row.setOnClickListener({
             Toast.makeText(context, Countireslist[position].strArea, Toast.LENGTH_SHORT).show()
             val outIntent = Intent(context, MealsByAreaActivity::class.java);

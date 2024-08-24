@@ -44,6 +44,7 @@ class MealDescriptionAdapter(var meallist: List<MealDescription>, val context: C
 
 
         holder.name.text=meallist[position].strMeal
+        holder.desc.text=meallist[position].idMeal
        holder.favbtn.setOnClickListener({
            val mealTosave = convertMealDescriptionToMeals(meallist[position])
            OnButtonClick.favbtnclick(mealTosave)

@@ -82,6 +82,11 @@ class MealsByCategory : AppCompatActivity(), OnButtonClick {
             val outIntent = Intent (this , MainActivity::class.java)
             startActivity(outIntent)
         })
+        val searchbtn=findViewById<Button>(R.id.searchbtn)
+        searchbtn.setOnClickListener({
+            val outIntent = Intent (this , SearchActivity::class.java)
+            startActivity(outIntent)
+        })
         favbtn=findViewById(R.id.favbtn)
         favbtn.setOnClickListener({
             val outIntent = Intent (this , favActivity::class.java)

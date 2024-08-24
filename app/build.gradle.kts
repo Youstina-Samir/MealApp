@@ -48,7 +48,7 @@ dependencies {
     implementation(libs.firebase.auth)
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-
+    implementation("com.airbnb.android:lottie-compose:6.0.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
