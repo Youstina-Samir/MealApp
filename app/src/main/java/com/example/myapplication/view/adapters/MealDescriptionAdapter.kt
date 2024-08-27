@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.convertMealDescriptionToMeals
 import com.example.myapplication.R
+import com.example.myapplication.view.MealDescriptionActivity
 import com.example.myapplication.view.OnButtonClick
 
 class MealDescriptionAdapter(var meallist: List<MealDescription>, val context: Context, val OnButtonClick: OnButtonClick): RecyclerView.Adapter<MealDescriptionAdapter.MealViewHolder>() {
@@ -55,7 +56,7 @@ class MealDescriptionAdapter(var meallist: List<MealDescription>, val context: C
         })
         holder.row.setOnClickListener({
             Toast.makeText(context,meallist[position].strMeal, Toast.LENGTH_SHORT ).show()
-            val outIntent = Intent (context ,   MealDescription::class.java);
+            val outIntent = Intent (context ,   MealDescriptionActivity::class.java);
             outIntent.putExtra("MealName" ,meallist[position].strMeal)
             outIntent.putExtra("MealImg",meallist[position].strMealThumb )
             context.startActivity(outIntent)

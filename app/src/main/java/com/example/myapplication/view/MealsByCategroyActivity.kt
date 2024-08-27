@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.ConvertMealsToFav
 import com.example.myapplication.Model.Database.MealsDatabase
 import com.example.myapplication.Model.FavoriteMeal
-import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.convertFavmealToMeals
 import com.example.myapplication.R

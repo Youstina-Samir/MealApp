@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.R
-import com.example.myapplication.view.MealDescription
+import com.example.myapplication.view.MealDescriptionActivity
 import com.example.myapplication.view.OnButtonClick
 import com.google.firebase.auth.FirebaseAuth
 
@@ -58,7 +58,7 @@ class MealAdapter(var meallist: List<Meals>, val context: Context, val OnButtonC
         })
        holder.row.setOnClickListener({
             Toast.makeText(context,meallist[position].strMeal, Toast.LENGTH_SHORT ).show()
-            val outIntent = Intent (context ,   MealDescription::class.java);
+            val outIntent = Intent (context ,   MealDescriptionActivity::class.java);
             outIntent.putExtra("MealName" ,meallist[position].strMeal)
             outIntent.putExtra("MealImg",meallist[position].strMealThumb )
             context.startActivity(outIntent)

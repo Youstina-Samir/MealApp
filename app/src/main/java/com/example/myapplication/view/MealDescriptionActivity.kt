@@ -2,25 +2,17 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.R
 import com.example.myapplication.view.signIn.AccountActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class MealDescription : AppCompatActivity() {
+class MealDescriptionActivity : AppCompatActivity() {
     lateinit var title: TextView
     lateinit var img: ImageView
     lateinit var video: VideoView

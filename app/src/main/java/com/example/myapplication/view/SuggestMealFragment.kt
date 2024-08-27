@@ -80,7 +80,7 @@ lateinit var viewModel: SuggestfragViewModel
             }
         }
         RandomMealImg.setOnClickListener({
-            val outIntent = Intent (this@suggestMealFragment.requireContext() ,   MealDescription::class.java)
+            val outIntent = Intent (this@suggestMealFragment.requireContext() ,   MealDescriptionActivity::class.java)
             outIntent.putExtra("MealName" ,  RandomMealName.text)
             outIntent.putExtra("MealImg",imgUrl)
            startActivity(outIntent)

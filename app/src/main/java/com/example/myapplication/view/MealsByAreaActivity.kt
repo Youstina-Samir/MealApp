@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Database.MealsDatabase
-import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.R
@@ -60,7 +59,7 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
         recyclerView.layoutManager= LinearLayoutManager(this@MealsByAreaActivity, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
 
-      val  homebtn= findViewById<Button>(R.id.btnhome)
+      val  homebtn= findViewById<Button>(R.id.btnhome);
         homebtn.setOnClickListener({
             val outIntent = Intent (this , MainActivity::class.java)
             startActivity(outIntent)

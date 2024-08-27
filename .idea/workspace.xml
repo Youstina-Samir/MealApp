@@ -30,11 +30,6 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_meal_details.xml">
-        <config>
-          <theme>@style/Theme.MyApplication.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_meals_by_area.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
@@ -102,13 +97,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ea9e7f-6f5b-4358-9089-d066a566ba02" name="Changes" comment="semifinal">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/splashScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash_screen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/Animation.json" afterDir="false" />
+    <list default="true" id="77ea9e7f-6f5b-4358-9089-d066a566ba02" name="Changes" comment="final edit">
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/adapters/MealDescriptionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/adapters/MealDescriptionAdapter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +227,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/GitProject/MealApp/app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/GitProject/MealApp/app/src/main/res/drawable&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -253,6 +245,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitProject\MealApp\app\src\main\res\drawable" />
+      <recent name="E:\GitProject\MealApp\app\src\main\res\raw" />
       <recent name="E:\GitProject\MealApp\app" />
       <recent name="E:\mobile app\MyApplication3\MyApplication3\app\src\main\res\drawable" />
     </key>
@@ -641,7 +635,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724454390874</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="final edit">
+      <option name="closed" value="true" />
+      <created>1724460312698</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724460312698</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -670,7 +672,8 @@
     <MESSAGE value="suggest frag view model done" />
     <MESSAGE value="suggest frag  v.2 done" />
     <MESSAGE value="semifinal" />
-    <option name="LAST_COMMIT_MESSAGE" value="semifinal" />
+    <MESSAGE value="final edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
