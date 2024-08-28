@@ -22,7 +22,7 @@
             android:id="@+id/instruction_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1. Ingredient A\n2. Ingredient B\n3. Ingredient C" />
+            android:text="Loading..." />
 
         <WebView
             android:id="@+id/webView"

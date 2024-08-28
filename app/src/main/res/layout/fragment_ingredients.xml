@@ -18,60 +18,60 @@
         android:id="@+id/ingredients_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1. Ingredient A\n2. Ingredient B\n3. Ingredient C" />
+        android:text="Loading..." />
 
     <TextView
         android:id="@+id/ingredients_text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        />
 
     <TextView
         android:id="@+id/ingredients_text3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        />
 
     <TextView
         android:id="@+id/ingredients_text4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+         />
 
     <TextView
         android:id="@+id/ingredients_text5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+       />
 
     <TextView
         android:id="@+id/ingredients_text6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+         />
 
     <TextView
         android:id="@+id/ingredients_text7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+         />
 
     <TextView
         android:id="@+id/ingredients_text8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+       />
 
     <TextView
         android:id="@+id/ingredients_text9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+       />
     <TextView
         android:id="@+id/ingredients_text10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,60 +83,58 @@
         android:id="@+id/measure_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1. Ingredient A\n2. Ingredient B\n3. Ingredient C" />
+        android:text="Loading..." />
 
     <TextView
         android:id="@+id/measure_text2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/measure_text3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/measure_text4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+         />
 
     <TextView
         android:id="@+id/measure_text5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+       />
 
     <TextView
         android:id="@+id/measure_text6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+         />
 
     <TextView
         android:id="@+id/measure_text7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+         />
 
     <TextView
         android:id="@+id/measure_text8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+       />
 
     <TextView
         android:id="@+id/measure_text9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        />
 
     <TextView
         android:id="@+id/measure_text10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+       />
 
 </LinearLayout>
