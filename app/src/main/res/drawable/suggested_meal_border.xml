@@ -1,0 +1,25 @@
+
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="#D0CFEA" />
+
+    <stroke
+        android:width="1dp"
+        android:color="@color/cardview_dark_background" />
+    <corners android:radius="40dp"/>
+    <padding
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="0dp" />
+
+    <gradient
+    android:startColor="#FFFF"
+    android:endColor="#D0CFEA"
+    android:angle="90"/>
+
+
+</shape>
+
+      

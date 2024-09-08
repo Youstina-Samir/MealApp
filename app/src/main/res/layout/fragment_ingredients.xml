@@ -1,140 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Example: List of ingredients -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Title: Ingredients -->
+
+    <!-- Heart Icon: Top-Right Corner -->
+
+    <!-- First Ingredient -->
+
     <TextView
         android:id="@+id/ingredients_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="Ingredients"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ingredients_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loading..." />
+        android:text="Loading..."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_title" />
 
+    <!-- Second Ingredient -->
     <TextView
         android:id="@+id/ingredients_text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text1" />
 
+    <!-- Third Ingredient -->
     <TextView
         android:id="@+id/ingredients_text3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text2" />
 
+    <!-- Fourth Ingredient -->
     <TextView
         android:id="@+id/ingredients_text4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text3" />
 
+    <!-- Fifth Ingredient -->
     <TextView
         android:id="@+id/ingredients_text5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text4" />
 
+    <!-- Sixth Ingredient -->
     <TextView
         android:id="@+id/ingredients_text6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text5" />
 
+    <!-- Seventh Ingredient -->
     <TextView
         android:id="@+id/ingredients_text7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text6" />
 
+    <!-- Eighth Ingredient -->
     <TextView
         android:id="@+id/ingredients_text8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text7" />
 
+    <!-- Ninth Ingredient -->
     <TextView
         android:id="@+id/ingredients_text9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text8" />
+
+    <!-- Tenth Ingredient -->
     <TextView
         android:id="@+id/ingredients_text10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text9" />
+
+    <!-- Measurement Title -->
+
+    <!-- First Measurement -->
 
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Measurment  alternatively."
+        android:layout_marginTop="4dp"
+        android:text="Measurements"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/measure_text1" />
+
     <TextView
         android:id="@+id/measure_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loading..." />
+        android:text="Loading..."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredients_text10" />
 
-    <TextView
-        android:id="@+id/measure_text2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!-- Second Measurement -->
 
+    <!-- Third Measurement -->
+
+    <!-- Fourth Measurement -->
     <TextView
         android:id="@+id/measure_text3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/measure_text4"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
-
-    <TextView
-        android:id="@+id/measure_text5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       />
-
-    <TextView
-        android:id="@+id/measure_text6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
-
-    <TextView
-        android:id="@+id/measure_text7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
-
-    <TextView
-        android:id="@+id/measure_text8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       />
-
-    <TextView
-        android:id="@+id/measure_text9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text2" />
 
     <TextView
         android:id="@+id/measure_text10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       />
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text9" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/bheart"
+        android:layout_width="39dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:contentDescription="Favorite"
+        android:src="@drawable/broken_heart_nobg"
+        app:layout_constraintEnd_toStartOf="@+id/heartimg"
+        app:layout_constraintTop_toTopOf="@+id/heartimg" />
+
+    <TextView
+        android:id="@+id/measure_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/measure_text7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text6" />
+
+    <TextView
+        android:id="@+id/measure_text5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text4" />
+
+    <TextView
+        android:id="@+id/measure_text8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text7" />
+
+    <TextView
+        android:id="@+id/measure_text9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text8" />
+
+    <TextView
+        android:id="@+id/measure_text6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text5" />
+
+    <ImageView
+        android:id="@+id/heartimg"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:contentDescription="Favorite"
+        android:src="@drawable/heart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/measure_text10" />
+
+    <TextView
+        android:id="@+id/measure_text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measure_text3" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

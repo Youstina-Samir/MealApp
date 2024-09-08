@@ -20,11 +20,6 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml">
-        <config>
-          <theme>@style/Theme.MyApplication</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_dish.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
@@ -36,6 +31,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_meals_by_area.xml">
+        <config>
+          <theme>@style/Theme.MyApplication</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_main.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
         </config>
@@ -60,7 +60,7 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_first.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
         </config>
@@ -91,22 +91,12 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/navigation.xml">
-        <config>
-          <theme>@style/Theme.MyApplication</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/single_row.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml">
-        <config>
-          <theme>@style/Theme.MyApplication</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
         </config>
@@ -122,18 +112,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77ea9e7f-6f5b-4358-9089-d066a566ba02" name="Changes" comment="MealDescriptionActivity fix">
+    <list default="true" id="77ea9e7f-6f5b-4358-9089-d066a566ba02" name="Changes" comment="version.1 ui">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/FirstFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/NewMainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_first.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/signIn/SignActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/view/signIn/SignActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ingredients.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ingredients.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_instructions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_instructions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_suggest_meal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_suggest_meal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,20 +162,6 @@
                 <item name="Meal App git" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Meal App git" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="android" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Meal App git" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -262,14 +238,16 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "UI",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/GitProject/MealApp/app/src/main/res/drawable",
+    "last_opened_file_path": "E:/MealApp.v1/MealApp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "experimental"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false"
   },
   "keyToStringList": {
     "kotlin-gradle-user-dirs": [
@@ -282,8 +260,27 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.-1629795460">
+      <recent name="com.example.myapplication" />
+    </key>
+    <key name="android.template.546049503">
+      <recent name="com.example.myapplication" />
+      <recent name="com.example.myapplication.controller" />
+    </key>
+    <key name="android.template.-219029725">
+      <recent name="com.example.myapplication.controller" />
+    </key>
+    <key name="android.template.922784780">
+      <recent name="com.example.myapplication" />
+    </key>
+    <key name="android.template.-681859033">
+      <recent name="com.example.myapplication" />
+    </key>
     <key name="android.template.-177850968">
       <recent name="com.example.myapplication.view" />
+    </key>
+    <key name="android.template.-398210014">
+      <recent name="com.example.myapplication" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\GitProject\MealApp\app\src\main\res\drawable" />
@@ -298,9 +295,6 @@
       <recent name="E:\GitProject\MealApp\app\src\main\java\com\example\myapplication\view" />
       <recent name="E:\mobile app adnroid projects\MyApplication3\MyApplication3\app\src\main\java\com\example\myapplication\controller" />
     </key>
-    <key name="android.template.-1629795460">
-      <recent name="com.example.myapplication" />
-    </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.example.myapplication.Database" />
     </key>
@@ -313,19 +307,6 @@
       <recent name="com.example.myapplication.view.adapters" />
       <recent name="com.example.myapplication.view.main" />
       <recent name="com.example.myapplication.netwrok" />
-    </key>
-    <key name="android.template.546049503">
-      <recent name="com.example.myapplication" />
-      <recent name="com.example.myapplication.controller" />
-    </key>
-    <key name="android.template.-219029725">
-      <recent name="com.example.myapplication.controller" />
-    </key>
-    <key name="android.template.922784780">
-      <recent name="com.example.myapplication" />
-    </key>
-    <key name="android.template.-681859033">
-      <recent name="com.example.myapplication" />
     </key>
     <key name="android.template.679876936">
       <recent name="com.example.myapplication.view.main" />
@@ -692,7 +673,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724765643974</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="version.1 ui">
+      <option name="closed" value="true" />
+      <created>1724860001865</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724860001865</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -723,7 +712,8 @@
     <MESSAGE value="semifinal" />
     <MESSAGE value="final edit" />
     <MESSAGE value="MealDescriptionActivity fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="MealDescriptionActivity fix" />
+    <MESSAGE value="version.1 ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="version.1 ui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

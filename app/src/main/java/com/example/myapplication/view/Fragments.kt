@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.TextView
 import android.widget.Toast
@@ -18,8 +19,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.myapplication.Model.Database.MealsDao
 import com.example.myapplication.Model.Database.MealsDatabase
+import com.example.myapplication.Model.MealDescription
 import com.example.myapplication.Model.MealDescriptionArray
+import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.RandomMeal
+import com.example.myapplication.Model.convertMealDescriptionToMeals
 import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.Model.netwrok.SimpleService
 import com.example.myapplication.R
@@ -29,7 +33,7 @@ import com.example.myapplication.ViewModel.SuggestfragViewModel
 import retrofit2.Response
 
 
-class IngredientsFragment : Fragment() {
+class IngredientsFragment : Fragment() ,OnButtonClick{
     lateinit var viewModel: MealDescriptionFragmentViewModel
     lateinit var ingredients_text1: TextView
     lateinit var ingredients_text2: TextView
@@ -51,19 +55,19 @@ class IngredientsFragment : Fragment() {
     lateinit var measure_text8: TextView
     lateinit var measure_text9: TextView
     lateinit var measure_text10: TextView
-
+    lateinit var heart:ImageView
+    lateinit var bheart:ImageView
+    lateinit var meal:MealDescription
 
 
     private lateinit var mealName: String
-    override fun onCreateView(
-
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setUpViewModel()
+
         mealName = arguments?.getString("mealName") ?: "Default Meal Name"
 
         viewModel.getMealDetail(mealName)
+        viewModel.getMealsByName(mealName)
         // Inflate the layout for this fragmen
         val observerMsg: Observer<String> = object : Observer<String> {
             override fun onChanged(value: String) {
@@ -97,11 +101,21 @@ class IngredientsFragment : Fragment() {
 
             }
         }
+
+        val observerMeals2: Observer<ArrayList<MealDescription>> = object :
+            Observer<ArrayList<MealDescription>> {
+            override fun onChanged(value: ArrayList<MealDescription>) {
+                 meal=value.get(0)
+            }
+        }
         viewModel.msg.observe(viewLifecycleOwner, observerMsg)
         viewModel.mealDetail.observe(viewLifecycleOwner, observerMealDetail)
+        viewModel.Meals2.observe(viewLifecycleOwner, observerMeals2)
 
 
         val view = inflater.inflate(R.layout.fragment_ingredients, container, false)
+        heart=view.findViewById(R.id.heartimg)
+        bheart=view.findViewById(R.id.bheart)
         ingredients_text1 = view.findViewById<TextView>(R.id.ingredients_text1)
         ingredients_text2 = view.findViewById<TextView>(R.id.ingredients_text2)
         ingredients_text3 = view.findViewById<TextView>(R.id.ingredients_text3)
@@ -122,7 +136,12 @@ class IngredientsFragment : Fragment() {
         measure_text8 = view.findViewById<TextView>(R.id.measure_text8)
         measure_text9 = view.findViewById<TextView>(R.id.measure_text9)
         measure_text10 = view.findViewById<TextView>(R.id.measure_text10)
-
+    heart.setOnClickListener {
+    favbtnclick( convertMealDescriptionToMeals(meal))
+    }
+    bheart.setOnClickListener {
+    deletebtnclick( convertMealDescriptionToMeals(meal))
+    }
 
         return view
     }
@@ -134,6 +153,13 @@ class IngredientsFragment : Fragment() {
         val factory = DetailsFregFactory(dao, retrofit)
         viewModel = ViewModelProvider(this, factory).get(MealDescriptionFragmentViewModel::class.java)
 
+    }
+
+    override fun favbtnclick(meal: Meals) {
+        viewModel.addMealToFav(meal)    }
+
+    override fun deletebtnclick(meal: Meals) {
+        viewModel.deleteMealFromFav(meal)
     }
 }
     // InstructionsFragment.kt

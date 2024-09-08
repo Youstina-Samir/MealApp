@@ -1,12 +1,13 @@
-package com.example.myapplication.view
+package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,13 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Database.MealsDatabase
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.netwrok.RetroBuilder
-import com.example.myapplication.R
 import com.example.myapplication.ViewModel.FilterFactory
 import com.example.myapplication.ViewModel.FilterViewModel
+import com.example.myapplication.view.OnButtonClick
 import com.example.myapplication.view.adapters.MealAdapter
-import com.example.myapplication.view.signIn.AccountActivity
 
-class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
+class MealByAreaFragment : Fragment() , OnButtonClick {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: MealAdapter
     lateinit var viewModel: FilterViewModel
@@ -28,12 +28,14 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_meals_by_area)
-        val incomingIntent: Intent = intent // get intent
-        val areaName = incomingIntent.getStringExtra("AreaName")
+
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_meal_by_area, container, false)
+        val areaName = arguments?.getString("AreaName")
         val areaString=areaName.toString()
-        areaTextView=findViewById(R.id.areaTextView)
+        areaTextView=view.findViewById(R.id.areaTextView)
         areaTextView.text=areaName
 
         setUpViewModel()
@@ -41,7 +43,7 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
         viewModel.getMealsByArea(areaString)
         val observerMsg: Observer<String> = object : Observer<String> {
             override fun onChanged(value: String) {
-                Toast.makeText(this@MealsByAreaActivity,value, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MealByAreaFragment.requireContext(),value, Toast.LENGTH_SHORT).show()
             }
         }
         val observerMeals: Observer<ArrayList<Meals>> = object : Observer<ArrayList<Meals>> {
@@ -50,41 +52,21 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
                 adapter.notifyDataSetChanged()
             }
         }
-        viewModel.msg.observe(this, observerMsg)
-        viewModel.Meals.observe(this, observerMeals)
+        viewModel.msg.observe(viewLifecycleOwner, observerMsg)
+        viewModel.Meals.observe(viewLifecycleOwner, observerMeals)
 
 
-        recyclerView = findViewById(R.id.mealRecycler)
-        adapter = MealAdapter(ArrayList(), this, this)
-        recyclerView.layoutManager= LinearLayoutManager(this@MealsByAreaActivity, LinearLayoutManager.VERTICAL, false)
+        recyclerView = view.findViewById(R.id.mealRecycler)
+        adapter = MealAdapter(ArrayList(), this@MealByAreaFragment.requireContext(), this)
+        recyclerView.layoutManager= LinearLayoutManager(this@MealByAreaFragment.requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
 
-      val  homebtn= findViewById<Button>(R.id.btnhome);
-        homebtn.setOnClickListener({
-            val outIntent = Intent (this , MainActivity::class.java)
-            startActivity(outIntent)
-        })
-        val favbtn = findViewById<Button>(R.id.favbtn)
-        favbtn.setOnClickListener({
-            val outIntent = Intent(this, favActivity::class.java)
-            startActivity(outIntent)
-        })
-        val accountbtn =findViewById<Button>(R.id.accountbtn)
-        accountbtn.setOnClickListener({
-            val outIntent = Intent(this, AccountActivity::class.java)
-            startActivity(outIntent)
-        })
-        val searchbtn=findViewById<Button>(R.id.searchbtn)
-        searchbtn.setOnClickListener({
-            val outIntent = Intent(this, SearchActivity::class.java)
-            startActivity(outIntent)
-        })
 
+        return view
     }
-
     private fun setUpViewModel(){
         val retrofit = RetroBuilder.service
-        val dao = MealsDatabase.getinstanceDatabase(this).getmealsDao()
+        val dao = MealsDatabase.getinstanceDatabase(this@MealByAreaFragment.requireContext()).getmealsDao()
         val factory= FilterFactory(dao , retrofit)
         viewModel= ViewModelProvider(this,factory).get(FilterViewModel::class.java)
 
@@ -97,6 +79,4 @@ class MealsByAreaActivity : AppCompatActivity(), OnButtonClick {
     override fun deletebtnclick(meal: Meals) {
         viewModel.deleteMealFromFav(meal)
     }
-
-
 }
