@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.io.IOException
 
 class SuggestfragViewModel (private val dao: MealsDao, private val retrofit: SimpleService) : ViewModel() {
     private val _msg = MutableLiveData<String>()
@@ -22,12 +23,16 @@ class SuggestfragViewModel (private val dao: MealsDao, private val retrofit: Sim
     val RandomMeal: LiveData<Response<RandomMeal>> = _RandomMeal
 
     fun GetRandomMeal(){
-    viewModelScope.launch(Dispatchers.IO){
+    viewModelScope.launch(Dispatchers.IO){ try{
         val resultRandomMeal= RetroBuilder.service.GetRandomMeal()
         withContext(Dispatchers.Main){
             _RandomMeal.postValue(resultRandomMeal)
+        } } catch (e: IOException) {
+        withContext(Dispatchers.Main) {
+            _msg.postValue("Network error. Please check your connection.")
+            }
         }
-    }
+      }
     }
 }
 class SuggestFregFactory   (private val dao: MealsDao, private val retrofit: SimpleService): ViewModelProvider.Factory {

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Database.MealsDatabase
 import com.example.myapplication.Model.Meals
 import com.example.myapplication.Model.netwrok.RetroBuilder
+import com.example.myapplication.R
 import com.example.myapplication.ViewModel.FavFactory
 import com.example.myapplication.ViewModel.FavViewModel
-import com.example.myapplication.view.OnButtonClick
 import com.example.myapplication.view.adapters.MealAdapter
 
 

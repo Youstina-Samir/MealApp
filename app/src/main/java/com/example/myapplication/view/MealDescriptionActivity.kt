@@ -1,23 +1,14 @@
 package com.example.myapplication.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.myapplication.Model.Database.MealsDatabase
-import com.example.myapplication.Model.Meals
-import com.example.myapplication.Model.netwrok.RetroBuilder
 import com.example.myapplication.R
-import com.example.myapplication.SearchFragment
-import com.example.myapplication.ViewModel.FilterFactory
-import com.example.myapplication.ViewModel.FilterViewModel
 
 class MealDescriptionActivity : AppCompatActivity()  {
     lateinit var title: TextView

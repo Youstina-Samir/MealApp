@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.io.IOException
 
 class MealDescriptionFragmentViewModel( private val dao: MealsDao, private val retrofit: SimpleService) : ViewModel() {
     private val _msg = MutableLiveData<String>()
@@ -29,6 +30,7 @@ class MealDescriptionFragmentViewModel( private val dao: MealsDao, private val r
     fun getMealDetail(mealName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val resultMealDetail = retrofit.getMealByName(mealName)
+
             withContext(Dispatchers.Main) {
                 _mealDetail.postValue(resultMealDetail)
             }

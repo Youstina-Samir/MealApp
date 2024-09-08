@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.myapplication.R
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.view.adapters.CategoriesAdapter
 import com.example.myapplication.view.adapters.CountiresAdapter
@@ -73,9 +74,9 @@ class NewMainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {item->
             when (item.itemId) {
                 R.id.navigation_home -> setCurrentFragment(firstFragment,userNameString)
-                 R.id.navigation_search->setCurrentFragment(searchFragment)
-                R.id.navigation_account->setCurrentFragment(accountFragment)
-                R.id.navigation_fav->setCurrentFragment(favFragment)
+                 R.id.navigation_search ->setCurrentFragment(searchFragment)
+                R.id.navigation_account ->setCurrentFragment(accountFragment)
+                R.id.navigation_fav ->setCurrentFragment(favFragment)
 
             }
             true

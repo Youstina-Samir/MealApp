@@ -1,8 +1,11 @@
 package com.example.myapplication.ViewModel
-
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -20,7 +23,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 import kotlinx.coroutines.withContext
+import java.io.IOException
+
 
 class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleService) : ViewModel() {
     private val _Meals = MutableLiveData<ArrayList<Meals>>()
@@ -32,18 +38,25 @@ class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleSe
 
     fun getMealsByCategory(category: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val resultMeals = retrofit.getMealsByCategory(category)
-            withContext(Dispatchers.Main) {
-                if (resultMeals.body()?.mealsArrayList.isNullOrEmpty()) {
-                    _msg.postValue("No products found")
-                } else {
-                    _Meals.postValue(resultMeals.body()?.mealsArrayList!!)
+            try {
+                val resultMeals = retrofit.getMealsByCategory(category)
+                withContext(Dispatchers.Main) {
+                    if (resultMeals.body()?.mealsArrayList.isNullOrEmpty()) {
+                        _msg.postValue("No products found")
+                    } else {
+                        _Meals.postValue(resultMeals.body()?.mealsArrayList!!)
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _msg.postValue("Network error. Please check your connection.")
                 }
             }
         }
     }
     fun getMealsByName(meal: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            try {
             val resultMeals = retrofit.getMealByName(meal)
             withContext(Dispatchers.Main) {
                 if (resultMeals.body()?.mealsDescriptionArray.isNullOrEmpty()) {
@@ -52,10 +65,15 @@ class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleSe
                     _Meals2.postValue(resultMeals.body()?.mealsDescriptionArray!!)
                 }
             }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _msg.postValue("Network error. Please check your connection.") }
+                }
         }
     }
     fun getMealsByArea(area: String) {
         viewModelScope.launch(Dispatchers.IO) {
+        try{
             val resultMeals = retrofit.getMealsByArea(area)
             withContext(Dispatchers.Main) {
                 if (resultMeals.body()?.mealsArrayList.isNullOrEmpty()) {
@@ -64,10 +82,15 @@ class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleSe
                     _Meals.postValue(resultMeals.body()?.mealsArrayList!!)
                 }
             }
+        } catch (e: Exception) {
+            withContext(Dispatchers.Main) {
+                _msg.postValue("Network error. Please check your connection.")
+            }
         }
     }
+    }
     fun getMealsByIngredient(ingredient: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) { try{
             val resultMeals = retrofit.getMealsByIngredient(ingredient)
             withContext(Dispatchers.Main) {
                 if (resultMeals.body()?.mealsArrayList.isNullOrEmpty()) {
@@ -75,8 +98,12 @@ class FilterViewModel (private val dao: MealsDao, private val retrofit: SimpleSe
                 } else {
                     _Meals.postValue(resultMeals.body()?.mealsArrayList!!)
                 }
+            } } catch (e: Exception) {
+            withContext(Dispatchers.Main) {
+                _msg.postValue("Network error. Please check your connection.")
             }
         }
+    }
     }
     fun addMealToFav(meal: Meals) {
         if(FirebaseAuth.getInstance().currentUser==null){

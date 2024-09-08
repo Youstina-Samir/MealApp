@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".NewMainActivity"
+            android:name=".view.NewMainActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity2"

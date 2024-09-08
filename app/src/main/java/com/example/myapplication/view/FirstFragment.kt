@@ -1,7 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.view
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapplication.Model.Database.MealsDatabase
 import com.example.myapplication.Model.netwrok.RetroBuilder
+import com.example.myapplication.R
 import com.example.myapplication.ViewModel.MainActivityViewModel
 import com.example.myapplication.ViewModel.MainFactory
 import com.example.myapplication.view.adapters.CategoriesAdapter
 import com.example.myapplication.view.adapters.CountiresAdapter
-import com.example.myapplication.view.suggestMealFragment
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 
